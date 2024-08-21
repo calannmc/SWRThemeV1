@@ -711,7 +711,7 @@ ul {
 }
 .nav-wrapper-desktop a {
   border: 0;
-  color: $link_color;
+  color: {{settings.brand_color_darkblue}};
   display: none;
   font-size: 14px;
   padding: 0 20px 0 0;
@@ -727,8 +727,10 @@ ul {
 }
 .nav-wrapper-desktop a:hover, .nav-wrapper-desktop a:focus, .nav-wrapper-desktop a:active {
   background-color: transparent;
-  color: $link_color;
-  text-decoration: underline;
+  color: {{settings.brand_color_white}};
+  text-decoration: none;
+  background-color:{{settings.brand_color_midblue}};
+  padding: 16px 24px;
 }
 
 @media (min-width: 1024px) {

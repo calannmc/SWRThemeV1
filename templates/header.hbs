@@ -1,19 +1,17 @@
 <style>
  a.nav-button {
   background-color: {{settings.brand_color_yellow}};
-  color: {{settings.brand_color_white}};
+  color: {{settings.brand_color_darkblue}};
   padding: 8px 16px;
-  border:solid 3px {{settings.brand_color_midblue}};
+  border:solid 3px {{settings.brand_color_yellow}};
   border-radius: 4px;
   text-align: center;
   display: inline-block;
   text-decoration: none;
+  margin-right:20px;
 }
 
-a.nav-button:hover {
-  background-color: $brand_color_midblue;
-  text-decoration: none;
-}
+
 
 .user-nav-list li a:hover,
 .menu-list-mobile-items li a:hover {
@@ -60,7 +58,7 @@ a.nav-button:hover {
       <li><a href="https://www.southwesternrailway.com/plan-my-journey">Plan my journey</a></li>
       <li><a href="https://www.southwesternrailway.com/travelling-with-us">Travelling with us</a></li>
       <li><a href="https://www.southwesternrailway.com/destinations-and-offers">Destinations and offers</a></li>
-      <li><a href="https://www.southwesternrailway.com/train-tickets">help and support</a></li>
+      <li><a href="https://www.southwesternrailway.com/train-tickets">Help and support</a></li>
       {{#unless signed_in}}
         <li>
           {{#link "sign_in" class="sign-in"}}

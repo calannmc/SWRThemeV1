@@ -1142,7 +1142,9 @@ ul {
   max-width: 610px;
   margin: 0 auto;
 }
-
+.intro-title{
+  color:$text_color_white;
+}
 .page-header {
   display: flex;
   flex-direction: column;

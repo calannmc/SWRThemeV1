@@ -1,7 +1,7 @@
 {
   "name": "SWRTheme-v1",
   "author": "Zendesk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "api_version": 4,
   "default_locale": "en-gb",
   "settings": [
@@ -30,7 +30,7 @@
           "value": "#061b2b"
         },
         {
-          "identifier": "brand_text_color",
+          "identifier": "brand_color_white",
           "type": "color",
           "description": "White color",
           "label": "White color",

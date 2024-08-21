@@ -10,6 +10,29 @@
   <div class="nav-wrapper-desktop">
     <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
       <ul class="user-nav-list">
+        <div class="nav-wrapper-desktop">
+  <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
+    <ul class="user-nav-list">
+      <li>
+        <a href="https://www.southwesternrailway.com/buy-train-tickets/ticket-search-results?openQTT=1" class="nav-button">Buy Tickets</a>
+      </li>
+      <li><a href="https://www.southwesternrailway.com/train-tickets">Train Tickets</a></li>
+      <l<li><a href="https://www.southwesternrailway.com/plan-my-journey">Plan my journey</a></li>
+      <li><a href="https://www.southwesternrailway.com/travelling-with-us">Travelling with us</a></li>
+      <li><a href="https://www.southwesternrailway.com/destinations-and-offers">Destinations and offers</a></li>
+      <li><a href="https://www.southwesternrailway.com/train-tickets">help and support</a></li>
+      {{#unless signed_in}}
+        <li>
+          {{#link "sign_in" class="sign-in"}}
+            {{t 'sign_in'}}
+          {{/link}}
+        </li>
+      {{/unless}}
+    </ul>
+  </nav>
+ 
+</div>
+
         <li>{{link 'community'}}</li>
         <li>{{link 'new_request' class='submit-a-request'}}</li>
         {{#unless signed_in}}
@@ -54,41 +77,48 @@
         <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
       </svg>
     </button>
-    <nav class="menu-list-mobile" id="user-nav-mobile" aria-expanded="false">
-      <ul class="menu-list-mobile-items">
-        {{#if signed_in}}
-          <li class="user-avatar-item item">
-            {{#my_profile role="menuitem" class="my-profile"}}
-              {{user_avatar class="menu-profile-avatar"}}
-              <div class="menu-profile-name">
-                <div>{{user_name}}</div>
-                <div class="my-profile-tooltip">{{t 'profile'}}</div>
-              </div>
-            {{/my_profile}}
-          </li>
-          <li class="item">{{link "requests" role="menuitem"}}</li>
-          <li class="item">{{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}</li>
-          <li class="item">{{contact_details role="menuitem"}}</li>
-          <li class="item">{{change_password role="menuitem" class='change-password'}}</li>
-          <li class="nav-divider"></li>
-        {{else}}
-          <li class="item">
-            {{#link "sign_in" role="menuitem"}}
-              {{t 'sign_in'}}
-            {{/link}}
-          </li>
-          <li class="nav-divider"></li>
-        {{/if}}
-        <li class="item">{{link 'community' role="menuitem"}}</li>
-        <li class="item">{{link 'new_request' role="menuitem" class='submit-a-request'}}</li>
-        <li class="nav-divider"></li>
-        {{#if signed_in}}
-          <li class="item">
-            {{link "sign_out" role="menuitem"}}
-          </li>
-        {{/if}}
-      </ul>
-    </nav>
+   <nav class="menu-list-mobile" id="user-nav-mobile" aria-expanded="false">
+  <ul class="menu-list-mobile-items">
+    {{#if signed_in}}
+      <li class="user-avatar-item item">
+        {{#my_profile role="menuitem" class="my-profile"}}
+          {{user_avatar class="menu-profile-avatar"}}
+          <div class="menu-profile-name">
+            <div>{{user_name}}</div>
+            <div class="my-profile-tooltip">{{t 'profile'}}</div>
+          </div>
+        {{/my_profile}}
+      </li>
+      <li class="item">{{link "requests" role="menuitem"}}</li>
+      <li class="item">{{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}</li>
+      <li class="item">{{contact_details role="menuitem"}}</li>
+      <li class="item">{{change_password role="menuitem" class='change-password'}}</li>
+      <li class="nav-divider"></li>
+    {{else}}
+      <li class="item">
+        {{#link "sign_in" role="menuitem"}}
+          {{t 'sign_in'}}
+        {{/link}}
+      </li>
+      <li class="nav-divider"></li>
+    {{/if}}
+    <li class="item">
+      <a href="https://www.southwesternrailway.com/buy-train-tickets/ticket-search-results?openQTT=1" class="nav-button">Buy Tickets</a>
+    </li>
+    <li class="item">{{link 'menu_item_1' role="menuitem"}}</li>
+    <li class="item">{{link 'menu_item_2' role="menuitem"}}</li>
+    <li class="item">{{link 'menu_item_3' role="menuitem"}}</li>
+    <li class="item">{{link 'menu_item_4' role="menuitem"}}</li>
+    <li class="item">{{link 'menu_item_5' role="menuitem"}}</li>
+    <li class="nav-divider"></li>
+    {{#if signed_in}}
+      <li class="item">
+        {{link "sign_out" role="menuitem"}}
+      </li>
+    {{/if}}
+  </ul>
+</nav>
+
   </div>
 
 </header>

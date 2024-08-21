@@ -1,3 +1,43 @@
+<style>
+  .nav-button {
+  background-color: $brand_color_yellow;
+  color: $brand_color_white;
+  padding: 8px 16px;
+  border:solid 1px $brand_color_midblue;
+  border-radius: 4px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.nav-button:hover {
+  background-color: $brand_color_midblue;
+  text-decoration: none;
+}
+
+.user-nav-list li a:hover,
+.menu-list-mobile-items li a:hover {
+  background-color: $brand_color_midblue /* Change this to your desired hover background color */
+  text-decoration: none;
+}
+
+.menu-list-mobile-items .nav-button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+}
+
+.menu-list-mobile-items .nav-button:hover {
+  background-color: #0056b3;
+}
+
+</style>
+
+
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
 
 <header class="header">

@@ -1,9 +1,9 @@
 <style>
  a.nav-button {
   background-color: {{settings.brand_color_yellow}};
-  color: $brand_color_white;
+  color: {{settings.brand_color_white}};
   padding: 8px 16px;
-  border:solid 3px $brand_color_midblue;
+  border:solid 3px {{settings.brand_color_midblue}};
   border-radius: 4px;
   text-align: center;
   display: inline-block;
@@ -17,7 +17,7 @@ a.nav-button:hover {
 
 .user-nav-list li a:hover,
 .menu-list-mobile-items li a:hover {
-  background-color: $brand_color_midblue /* Change this to your desired hover background color */
+  background-color: {{settings.brand_color_midblue}} /* Change this to your desired hover background color */
   text-decoration: none;
 }
 
@@ -42,9 +42,9 @@ a.nav-button:hover {
 
 <header class="header">
   <div class="logo">
-    {{#link 'help_center'}}
+    <a href="https://www.southwesternrailway.com/">
       <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
-    {{/link}}
+    </a>
   </div>
 
   <div class="nav-wrapper-desktop">

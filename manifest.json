@@ -55,14 +55,14 @@
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "#00000"
+          "value": "#000000"
         },
         {
           "identifier": "text_color_black",
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "#00000"
+          "value": "#000000"
         },
         {
           "identifier": "text_color_white",

@@ -1126,7 +1126,8 @@ ul {
 
 /***** Hero component *****/
 .hero {
-  background-image: url($homepage_background_image);
+  /*background-image: url($homepage_background_image);*/
+  background-color:$brand_color_midblue;
   background-position: center;
   background-size: cover;
   height: 300px;

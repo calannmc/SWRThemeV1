@@ -1,7 +1,7 @@
 {
   "name": "SWRTheme-v1",
   "author": "Zendesk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "api_version": 4,
   "default_locale": "en-gb",
   "settings": [
@@ -9,11 +9,18 @@
       "label": "colors_group_label",
       "variables": [
         {
-          "identifier": "brand_color",
+          "identifier": "brand_color_midblue",
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#17494D"
+          "value": "#0092cb"
+        },
+        {
+          "identifier": "brand_color_darkblue",
+          "type": "color",
+          "description": "brand_color_description",
+          "label": "brand_color_label",
+          "value": "#061b2b"
         },
         {
           "identifier": "brand_text_color",
@@ -23,11 +30,32 @@
           "value": "#FFFFFF"
         },
         {
-          "identifier": "text_color",
+          "identifier": "brand_color_yellow",
+          "type": "color",
+          "description": "brand_color_description",
+          "label": "brand_color_label",
+          "value": "#f5d83c"
+        },
+        {
+          "identifier": "brand_color_lightblue",
+          "type": "color",
+          "description": "brand_color_description",
+          "label": "brand_color_label",
+          "value": "#c7dae7"
+        },
+        {
+          "identifier": "text_color_black",
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "#2F3941"
+          "value": "#00000"
+        },
+        {
+          "identifier": "text_color_white",
+          "type": "color",
+          "description": "text_color_description",
+          "label": "text_color_label",
+          "value": "#ffffff"
         },
         {
           "identifier": "link_color",

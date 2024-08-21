@@ -711,10 +711,11 @@ ul {
 }
 .nav-wrapper-desktop a {
   border: 0;
-  color: {{settings.brand_color_darkblue}};
-  display: none;
+  color: $brand_color_darkblue;
+  
   font-size: 14px;
-  padding: 0 20px 0 0;
+  padding: 16px 24px;
+  margin: 0 20px 0 0;
   width: auto;
 }
 @media (min-width: 768px) {
@@ -727,9 +728,9 @@ ul {
 }
 .nav-wrapper-desktop a:hover, .nav-wrapper-desktop a:focus, .nav-wrapper-desktop a:active {
   background-color: transparent;
-  color: {{settings.brand_color_white}};
+  color: $brand_color_white;
   text-decoration: none;
-  background-color:{{settings.brand_color_midblue}};
+  background-color:$brand_color_midblue;
   padding: 16px 24px;
 }
 

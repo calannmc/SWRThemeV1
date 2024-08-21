@@ -9,6 +9,13 @@
       "label": "colors_group_label",
       "variables": [
         {
+          "identifier": "brand_color",
+          "type": "color",
+          "description": "brand_color_description",
+          "label": "brand_color_label",
+          "value": "#0092cb"
+        },
+        {
           "identifier": "brand_color_midblue",
           "type": "color",
           "description": "brand_color_description",
@@ -42,6 +49,13 @@
           "description": "brand_color_description",
           "label": "brand_color_label",
           "value": "#c7dae7"
+        },
+        {
+          "identifier": "text_color",
+          "type": "color",
+          "description": "text_color_description",
+          "label": "text_color_label",
+          "value": "#00000"
         },
         {
           "identifier": "text_color_black",

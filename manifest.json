@@ -328,12 +328,7 @@
           "min": 30,
           "max": 200
         },
-        {
-          "identifier": "blocks_icon_1",
-          "type": "file",
-          "description": "Home category icon #1",
-          "label": "Home category icon #1"
-        },
+       
         {
           "identifier": "blocks_icon_2",
           "type": "file",

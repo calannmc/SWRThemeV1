@@ -7,9 +7,8 @@
 
   .blocks-item {
     background-color: transparent;
-  
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   border:none;
+    
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -49,6 +48,7 @@
     padding: 5px 10px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+    color:$brand_color_midblue;
   }
 
   .blocks-item:hover {
@@ -60,7 +60,7 @@
   }
 
   .blocks-item:hover .blocks-item-title {
-    background-color: #f0f0f0;
+    background-color: $brand_color_lightblue;
   }
 </style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>

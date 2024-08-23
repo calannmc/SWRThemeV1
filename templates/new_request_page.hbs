@@ -61,7 +61,35 @@
   
 };
 
+if (categoryToFormMap.hasOwnProperty(category[0].id)) {
+    console.log('true');
+    formChosen = categoryToFormMap[category[0].id];
 
+    const newSettings = {
+        webWidget: {
+            answerBot: { suppress: true },
+            helpCenter: { filter: { category: category.id } },
+            chat: { suppress: true },
+            contactForm: {
+                suppress: false,
+                ticketForms: [{ id: formChosen }],
+                selectTicketForm: { '*': 'Choose your product:' },
+                contactOptions: {
+                    enabled: true,
+                    contactFormLabel: { '*': 'Contact us' }
+                }
+            }
+        }
+    };
+
+    zE('webWidget', 'updateSettings', newSettings);
+    console.log(newSettings);
+}
+
+
+  
+  	} )
+  }
 
 
 <script>

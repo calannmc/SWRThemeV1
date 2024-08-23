@@ -1,5 +1,5 @@
 <style>
-  /* Default Styles */
+/* Default Styles */
 .section.hero-contact {
     background-color: #000;
     color: #fff;
@@ -24,6 +24,7 @@
 }
 
 /* Other styles can be added similarly */
+
 
 </style>
 {{breadcrumbs}}
@@ -179,16 +180,35 @@ if (categoryToFormMap.hasOwnProperty(category[0].id)) {
   renderNewRequestForm(settings, props, container);
 </script>
 <script>
-  const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 const ticketFormId = params.get('ticket_form_id');
 const categoryName = params.get('categoryName');
 
+// Update the form classes and hero title dynamically
 if (ticketFormId) {
     document.querySelector('.form').classList.add(`form-${ticketFormId}`);
+
+    // Set the hero title based on the form ID (add logic here if you have a mapping of form IDs to names)
+    let formTitle = ''; // Default title or a specific title based on the form ID
+    switch(ticketFormId) {
+        case '15525136863132':
+            formTitle = 'Price Promise Request';
+            break;
+        case '15525177480220':
+            formTitle = 'Claiming During Disruption';
+            break;
+        case '15525228238620':
+            formTitle = 'Claim for Taxi or Hotel';
+            break;
+        default:
+            formTitle = 'Submit a Request';
+    }
+    document.querySelector('.intro-title-contact').innerText = formTitle;
 }
 
 if (categoryName) {
     document.querySelector('.hero-contact').classList.add(`category-${categoryName.replace(/\s+/g, '-').toLowerCase()}`);
 }
+
 </script>
 

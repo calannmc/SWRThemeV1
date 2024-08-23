@@ -1273,13 +1273,43 @@ ul {
 
 /***** Blocks *****/
 /* Used in Homepage#categories and Community#topics */
+
+
 .blocks-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  list-style: none;
-  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
+
+.blocks-item {
+  background-color: #0092CB;
+  border: 1px solid #0092CB;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  aspect-ratio: 1 / 1;
+}
+
+.blocks-item-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.blocks-item-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.blocks-item-description {
+  font-size: 14px;
+  color: #666;
+}
+
 @media (min-width: 768px) {
   .blocks-list {
     margin: 0 -15px;

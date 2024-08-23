@@ -187,7 +187,9 @@ const categoryName = params.get('categoryName');
 // Update the form classes and hero title dynamically
 if (ticketFormId) {
     document.querySelector('.form').classList.add(`form-${ticketFormId}`);
-
+// Debugging
+console.log("Ticket Form ID:", ticketFormId);
+console.log("Category Name:", categoryName);
     // Set the hero title based on the form ID (add logic here if you have a mapping of form IDs to names)
     let formTitle = ''; // Default title or a specific title based on the form ID
     switch(ticketFormId) {

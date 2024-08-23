@@ -218,4 +218,51 @@ if (categoryName) {
 }
 
 </script>
+<script>
+    const params = new URLSearchParams(window.location.search);
+const ticketFormId = params.get('ticket_form_id');
 
+// Function to set styles based on ticket form ID
+function applyStylesBasedOnFormId(formId) {
+    const heroElement = document.querySelector('.hero-contact');
+    const formElement = document.querySelector('.form');
+
+    switch(formId) {
+        case '15525136863132': // Example ID for Price Promise
+            heroElement.style.backgroundColor = '#dff0d8'; // Greenish background for hero
+            heroElement.style.color = '#3c763d'; // Darker green text for hero
+            formElement.style.backgroundColor = '#000'; // Black background for form
+            formElement.style.color = '#fff'; // White text color for form
+            break;
+        
+        case '15525177480220': // Example ID for Claiming During Disruption
+            heroElement.style.backgroundColor = '#f2dede'; // Light red background for hero
+            heroElement.style.color = '#a94442'; // Darker red text for hero
+            formElement.style.backgroundColor = '#000'; // Black background for form
+            formElement.style.color = '#fff'; // White text color for form
+            break;
+
+        case '15525228238620': // Example ID for Claim for Taxi or Hotel
+            heroElement.style.backgroundColor = '#d9edf7'; // Light blue background for hero
+            heroElement.style.color = '#31708f'; // Darker blue text for hero
+            formElement.style.backgroundColor = '#000'; // Black background for form
+            formElement.style.color = '#fff'; // White text color for form
+            break;
+
+        default: // Default styles for other forms
+            heroElement.style.backgroundColor = '#000'; // Default black background for hero
+            heroElement.style.color = '#fff'; // Default white text for hero
+            formElement.style.backgroundColor = '#000'; // Default black background for form
+            formElement.style.color = '#fff'; // Default white text for form
+            break;
+    }
+}
+
+// Apply styles based on the ticket form ID
+if (ticketFormId) {
+    applyStylesBasedOnFormId(ticketFormId);
+} else {
+    console.log("No ticket form ID found.");
+}
+
+</script>

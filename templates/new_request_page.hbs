@@ -2,7 +2,7 @@
     <style>
         /* Breadcrumbs styling */
         .breadcrumbs {
-            padding: 0 40px 0 40px;
+            padding: 10px 40px 10px 40px;
         }
 
         /* Default Styles */
@@ -84,6 +84,7 @@
                 case '15525228238620':
                     heroElement.style.backgroundColor = '#C7DAE7';
                     heroElement.style.color = '#000000';
+                    applyTextColor(heroElement, '#000000');  // Ensure all hero text is #000000
                     formElement.style.backgroundColor = '#C7DAE7';
                     formElement.style.color = '#000000';
                     applyTextColor(formElement, '#000000');  // Apply text color to all text within the form
@@ -107,7 +108,7 @@
             formElement.style.borderRadius = '8px'; // Optional: rounded corners
         }
 
-        // Helper function to apply text color to all child elements within the form
+        // Helper function to apply text color to all child elements within the hero and form
         function applyTextColor(element, color) {
             element.querySelectorAll('h1, h2, h3, p, label, span, div').forEach(function(child) {
                 child.style.color = color;
@@ -145,4 +146,5 @@
 
         renderNewRequestForm(settings, props, container);
     </script>
+
 

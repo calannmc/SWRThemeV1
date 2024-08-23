@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit a Request</title>
+
     <style>
         /* Breadcrumbs styling */
         .breadcrumbs {
@@ -87,11 +82,11 @@
                     formElement.style.color = '#ffffff';
                     break;
                 case '15525228238620':
-                    formTitle = 'Claiming During Disruption';
                     heroElement.style.backgroundColor = '#C7DAE7';
                     heroElement.style.color = '#000000';
                     formElement.style.backgroundColor = '#C7DAE7';
                     formElement.style.color = '#000000';
+                    applyTextColor(formElement, '#000000');  // Apply text color to all text within the form
                     break;
                 case '15525177480220':
                     heroElement.style.backgroundColor = '#061b2b';
@@ -110,6 +105,13 @@
             // Apply styles to the form container
             formElement.style.padding = '40px'; // Ensure sufficient padding
             formElement.style.borderRadius = '8px'; // Optional: rounded corners
+        }
+
+        // Helper function to apply text color to all child elements within the form
+        function applyTextColor(element, color) {
+            element.querySelectorAll('h1, h2, h3, p, label, span, div').forEach(function(child) {
+                child.style.color = color;
+            });
         }
     </script>
 
@@ -144,5 +146,3 @@
         renderNewRequestForm(settings, props, container);
     </script>
 
-</body>
-</html>

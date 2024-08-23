@@ -1182,7 +1182,7 @@ ul {
 }
 .hero-contact {
   /*background-image: url($homepage_background_image);*/
-  background-color:$brand_color_black;
+  background-color:$brand_color_darkblue;
   background-position: center;
   background-size: cover;
   height: 300px;

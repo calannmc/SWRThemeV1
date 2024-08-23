@@ -25,37 +25,104 @@
 
 
   <div id="main-content" class="form">
-    <div id="new-request-form"></div>
+        {{request_form wysiwyg=true}}
+      </div>
+    </div>
   </div>
 </div>
 
-<script type="module">
-  import { renderNewRequestForm } from "new-request-form";
+<script>
+  const params = new URLSearchParams(window.location.search);
+    console.log('Refering category:',referringCategory )
+  console.log(ALL_CATEGORY_COLOURS)
 
-  const container = document.getElementById("new-request-form");
+  const ticketFormId = params.get('ticket_form_id');
+  const categoryName = params.get('categoryName');
+  const categoryLink = params.get('back'); 
 
-  const settings = {{json settings}};
+  if (ticketFormId) {
+      console.log(`Ticket form ID is present: ${ticketFormId}`);
+  		document.querySelector('.request_ticket_form_id').style.display = 'none'
+  }
+  
+  if(categoryName) {
+  	document.querySelector('#referringCategory').style.display = 'inline'
+  	document.querySelector('#referringCategoryURL').href = categoryLink
+  	document.querySelector('#logoLink').href = categoryLink
+  	document.querySelector('#referringCategoryURL').innerHTML = categoryName
+  
+  	FETCH_ALL_CATEGORIES(categoryName).then(category => {
+  		console.log('category', category[0])
+  		  let formChosen;
+       const categoryToFormMap = {
+  15549359759388:15525136863132 , //Price promise
+  15549327359260:15525177480220 , //Claiming during disruption
+  15549324266780:15525228238620 , //Claim for Taxi or hotel
+  
+};
 
-  const props = {
-    requestForm: {{json new_request_form}},
-    newRequestPath: {{json (page_path 'new_request')}},
-    parentId: {{json parent.id}},
-    parentIdPath: {{json parent.url}},
-    locale: {{json help_center.locale}},
-    baseLocale: {{json help_center.base_locale}},
-    hasAtMentions: {{json help_center.at_mentions_enabled}},
-    userRole: {{json user.role}},
-    brandId: {{json brand.id}},
-    wysiwyg: true,
-    answerBotModal: {
-      answerBot: {{json answer_bot}},
-      hasRequestManagement: {{json help_center.request_management_enabled}},
-      isSignedIn: {{json signed_in}},
-      helpCenterPath: {{json (page_path 'help_center')}},
-      requestsPath: {{json (page_path 'requests')}},
-      requestPath: {{json (page_path 'request' id=answer_bot.request_id)}}
-    },
-  };
+if (categoryToFormMap.hasOwnProperty(category[0].id)) {
+    console.log('true');
+    formChosen = categoryToFormMap[category[0].id];
 
-  renderNewRequestForm(settings, props, container);
+    const newSettings = {
+        webWidget: {
+            answerBot: { suppress: true },
+            helpCenter: { filter: { category: category.id } },
+            chat: { suppress: true },
+            contactForm: {
+                suppress: false,
+                ticketForms: [{ id: formChosen }],
+                selectTicketForm: { '*': 'Choose your product:' },
+                contactOptions: {
+                    enabled: true,
+                    contactFormLabel: { '*': 'Contact us' }
+                }
+            }
+        }
+    };
+
+    zE('webWidget', 'updateSettings', newSettings);
+    console.log(newSettings);
+}
+
+
+  
+  	} )
+  }
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var categoryMappings = {
+      '155493597593887': {
+        'url': 'https://swrailway.zendesk.com/hc/en-gb/categories/15549359759388-Price-promise',
+        'name': 'Price promise'
+      },
+      '15549327359260': {
+        'url': 'https://swrailway.zendesk.com/hc/en-gb/categories/15549327359260-Claiming-during-disruption',
+        'name': 'Claiming during disruption'
+      },
+      '15549324266780': {
+        'url': 'https://swrailway.zendesk.com/hc/en-gb/categories/15549324266780-Claim-for-Taxi-or-hotel',
+        'name': 'Claim for taxi or hotel'
+      }
+    };
+
+    var referringCategoryElement = document.getElementById('referringCategory');
+    var referringCategoryURL = document.getElementById('referringCategoryURL');
+    
+    // Fetch the current category ID from the data attribute
+    var currentCategoryID = referringCategoryElement.getAttribute('data-category-id');
+    
+    if (categoryMappings[currentCategoryID]) {
+      referringCategoryElement.style.pointerEvents = 'auto';
+      referringCategoryURL.href = categoryMappings[currentCategoryID].url;
+      referringCategoryURL.textContent = categoryMappings[currentCategoryID].name;
+    }
+  });
+  
+  
 </script>
+  
+

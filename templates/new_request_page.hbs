@@ -1,234 +1,148 @@
-<style>
-  .breadcrumbs{
-    padding:40px;
-  }
-</style>
-{{breadcrumbs}}
-<section id="main-content" class="section hero-contact">
-  <div class="hero-inner">
-    <h1 class="intro-title-contact">{{t 'submit_a_request'}}</h1>
-   <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-    {{!--<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-    </svg>
-    {{search submit=false instant=settings.instant_search class='search search-full'}}--}}
-  </div>
-</section><div class="container-divider"></div>
-<div class="container">
-  <div class="sub-nav">
-    
-    {{!--<div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
-      {{search submit=false}}
-    </div>--}}
-  </div>
-  <div id="main-content" class="form">
-    <div id="new-request-form"></div>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a Request</title>
+    <style>
+        /* Breadcrumbs styling */
+        .breadcrumbs {
+            padding: 40px;
+        }
 
-{{!--<script>
-  const params = new URLSearchParams(window.location.search);
-    console.log('Refering category:',referringCategory )
-  console.log(ALL_CATEGORY_COLOURS)
+        /* Default Styles */
+        .section.hero-contact {
+            background-color: #000;
+            color: #fff;
+        }
 
-  const ticketFormId = params.get('ticket_form_id');
-  const categoryName = params.get('categoryName');
-  const categoryLink = params.get('back'); 
+        /* Form Container Styles */
+        .form {
+            background-color: #000; /* Black background */
+            color: #fff; /* White text color for contrast */
+            padding: 40px; /* Increased padding around the form */
+            border-radius: 8px; /* Optional: rounded corners */
+        }
 
-  if (ticketFormId) {
-      console.log(`Ticket form ID is present: ${ticketFormId}`);
-  		document.querySelector('.request_ticket_form_id').style.display = 'none'
-  }
-  
-  if(categoryName) {
-  	document.querySelector('#referringCategory').style.display = 'inline'
-  	document.querySelector('#referringCategoryURL').href = categoryLink
-  	document.querySelector('#logoLink').href = categoryLink
-  	document.querySelector('#referringCategoryURL').innerHTML = categoryName
-  
-  	FETCH_ALL_CATEGORIES(categoryName).then(category => {
-  		console.log('category', category[0])
-  		  let formChosen;
-       const categoryToFormMap = {
-  15549359759388:15525136863132 , //Price promise
-  15549327359260:15525177480220 , //Claiming during disruption
-  15549324266780:15525228238620 , //Claim for Taxi or hotel
-  
-};
+        /* Apply white text specifically to form titles */
+        .form h1, .form h2, .form h3, .form label {
+            color: #fff;
+        }
 
-if (categoryToFormMap.hasOwnProperty(category[0].id)) {
-    console.log('true');
-    formChosen = categoryToFormMap[category[0].id];
+        /* Specific Styles for Form ID 15525136863132 */
+        .form-15525136863132 .section.hero-contact {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
 
-    const newSettings = {
-        webWidget: {
-            answerBot: { suppress: true },
-            helpCenter: { filter: { category: category.id } },
-            chat: { suppress: true },
-            contactForm: {
-                suppress: false,
-                ticketForms: [{ id: formChosen }],
-                selectTicketForm: { '*': 'Choose your product:' },
-                contactOptions: {
-                    enabled: true,
-                    contactFormLabel: { '*': 'Contact us' }
+        /* Specific Styles for Form ID 15525177480220 */
+        .form-15525177480220 .section.hero-contact {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+
+        /* Specific Styles for Form ID 15525228238620 */
+        .form-15525228238620 .section.hero-contact {
+            background-color: #d9edf7;
+            color: #31708f;
+        }
+    </style>
+</head>
+<body>
+
+    {{breadcrumbs}}
+
+    <section id="main-content" class="section hero-contact">
+        <div class="hero-inner">
+            <h1 class="intro-title-contact">{{t 'submit_a_request'}}</h1>
+            <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+        </div>
+    </section>
+
+    <div class="container-divider"></div>
+
+    <div class="container">
+        <div class="sub-nav"></div>
+        <div id="main-content" class="form">
+            <div id="new-request-form"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const ticketFormId = params.get('ticket_form_id');
+
+            if (ticketFormId) {
+                const heroElement = document.querySelector('.hero-contact');
+                const formElement = document.querySelector('.form');
+
+                let formTitle = ''; // Default title or a specific title based on the form ID
+                switch(ticketFormId) {
+                    case '15525136863132':
+                        formTitle = 'Price Promise Request';
+                        heroElement.style.backgroundColor = '#dff0d8';
+                        heroElement.style.color = '#3c763d';
+                        break;
+                    case '15525177480220':
+                        formTitle = 'Claiming During Disruption';
+                        heroElement.style.backgroundColor = '#f2dede';
+                        heroElement.style.color = '#a94442';
+                        break;
+                    case '15525228238620':
+                        formTitle = 'Claim for Taxi or Hotel';
+                        heroElement.style.backgroundColor = '#d9edf7';
+                        heroElement.style.color = '#31708f';
+                        break;
+                    default:
+                        formTitle = 'Submit a Request';
+                        heroElement.style.backgroundColor = '#000';
+                        heroElement.style.color = '#fff';
+                        break;
                 }
+                
+                // Apply the title to the hero section
+                document.querySelector('.intro-title-contact').innerText = formTitle;
+
+                // Apply styles to the form container
+                formElement.style.backgroundColor = '#000'; // Ensure the background is black
+                formElement.style.color = '#fff'; // Ensure the text is white
+                formElement.style.padding = '40px'; // Increase padding
+                formElement.style.borderRadius = '8px'; // Optional: rounded corners
             }
-        }
-    };
+        });
+    </script>
 
-    zE('webWidget', 'updateSettings', newSettings);
-    console.log(newSettings);
-}
+    <script type="module">
+        import { renderNewRequestForm } from "new-request-form";
 
+        const container = document.getElementById("new-request-form");
 
-  
-  	} )
-  }
+        const settings = {{json settings}};
 
+        const props = {
+            requestForm: {{json new_request_form}},
+            newRequestPath: {{json (page_path 'new_request')}},
+            parentId: {{json parent.id}},
+            parentIdPath: {{json parent.url}},
+            locale: {{json help_center.locale}},
+            baseLocale: {{json help_center.base_locale}},
+            hasAtMentions: {{json help_center.at_mentions_enabled}},
+            userRole: {{json user.role}},
+            brandId: {{json brand.id}},
+            wysiwyg: true,
+            answerBotModal: {
+                answerBot: {{json answer_bot}},
+                hasRequestManagement: {{json help_center.request_management_enabled}},
+                isSignedIn: {{json signed_in}},
+                helpCenterPath: {{json (page_path 'help_center')}},
+                requestsPath: {{json (page_path 'requests')}},
+                requestPath: {{json (page_path 'request' id=answer_bot.request_id)}}
+            },
+        };
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var categoryMappings = {
-      '155493597593887': {
-        'url': 'https://swrailway.zendesk.com/hc/en-gb/categories/15549359759388-Price-promise',
-        'name': 'Price promise'
-      },
-      '15549327359260': {
-        'url': 'https://swrailway.zendesk.com/hc/en-gb/categories/15549327359260-Claiming-during-disruption',
-        'name': 'Claiming during disruption'
-      },
-      '15549324266780': {
-        'url': 'https://swrailway.zendesk.com/hc/en-gb/categories/15549324266780-Claim-for-Taxi-or-hotel',
-        'name': 'Claim for taxi or hotel'
-      }
-    };
+        renderNewRequestForm(settings, props, container);
+    </script>
 
-    var referringCategoryElement = document.getElementById('referringCategory');
-    var referringCategoryURL = document.getElementById('referringCategoryURL');
-    
-    // Fetch the current category ID from the data attribute
-    var currentCategoryID = referringCategoryElement.getAttribute('data-category-id');
-    
-    if (categoryMappings[currentCategoryID]) {
-      referringCategoryElement.style.pointerEvents = 'auto';
-      referringCategoryURL.href = categoryMappings[currentCategoryID].url;
-      referringCategoryURL.textContent = categoryMappings[currentCategoryID].name;
-    }
-  });
-  
-  
-</script>--}}
-  
-<script type="module">
-  import { renderNewRequestForm } from "new-request-form";
-
-  const container = document.getElementById("new-request-form");
-
-  const settings = {{json settings}};
-
-  const props = {
-    requestForm: {{json new_request_form}},
-    newRequestPath: {{json (page_path 'new_request')}},
-    parentId: {{json parent.id}},
-    parentIdPath: {{json parent.url}},
-    locale: {{json help_center.locale}},
-    baseLocale: {{json help_center.base_locale}},
-    hasAtMentions: {{json help_center.at_mentions_enabled}},
-    userRole: {{json user.role}},
-    brandId: {{json brand.id}},
-    wysiwyg: true,
-    answerBotModal: {
-      answerBot: {{json answer_bot}},
-      hasRequestManagement: {{json help_center.request_management_enabled}},
-      isSignedIn: {{json signed_in}},
-      helpCenterPath: {{json (page_path 'help_center')}},
-      requestsPath: {{json (page_path 'requests')}},
-      requestPath: {{json (page_path 'request' id=answer_bot.request_id)}}
-    },
-  };
-
-  renderNewRequestForm(settings, props, container);
-</script>
-<script>
-const params = new URLSearchParams(window.location.search);
-const ticketFormId = params.get('ticket_form_id');
-const categoryName = params.get('categoryName');
-
-// Update the form classes and hero title dynamically
-if (ticketFormId) {
-    document.querySelector('.form').classList.add(`form-${ticketFormId}`);
-// Debugging
-console.log("Ticket Form ID:", ticketFormId);
-console.log("Category Name:", categoryName);
-    // Set the hero title based on the form ID (add logic here if you have a mapping of form IDs to names)
-    let formTitle = ''; // Default title or a specific title based on the form ID
-    switch(ticketFormId) {
-        case '15525136863132':
-            formTitle = 'Price Promise Request';
-            break;
-        case '15525177480220':
-            formTitle = 'Claiming During Disruption';
-            break;
-        case '15525228238620':
-            formTitle = 'Claim for Taxi or Hotel';
-            break;
-        default:
-            formTitle = 'Submit a Request';
-    }
-    document.querySelector('.intro-title-contact').innerText = formTitle;
-}
-
-if (categoryName) {
-    document.querySelector('.hero-contact').classList.add(`category-${categoryName.replace(/\s+/g, '-').toLowerCase()}`);
-}
-
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const params = new URLSearchParams(window.location.search);
-    const ticketFormId = params.get('ticket_form_id');
-
-    if (ticketFormId) {
-        const heroElement = document.querySelector('.hero-contact');
-        const formElement = document.querySelector('.form');
-
-        switch(ticketFormId) {
-            case '15525136863132':
-                heroElement.style.backgroundColor = '#dff0d8';
-                heroElement.style.color = '#3c763d';
-                formElement.style.backgroundColor = '#000';
-                formElement.style.color = '#fff';
-                break;
-
-            case '15525177480220':
-                heroElement.style.backgroundColor = '#f2dede';
-                heroElement.style.color = '#a94442';
-                formElement.style.backgroundColor = '#000';
-                formElement.style.color = '#fff';
-                break;
-
-            case '15525228238620':
-                heroElement.style.backgroundColor = '#d9edf7';
-                heroElement.style.color = '#31708f';
-                formElement.style.backgroundColor = '#000';
-                formElement.style.color = '#fff';
-                break;
-
-            default:
-                heroElement.style.backgroundColor = '#000';
-                heroElement.style.color = '#fff';
-                formElement.style.backgroundColor = '#000';
-                formElement.style.color = '#fff';
-                break;
-        }
-    }
-});
-
-
-</script>
+</body>
+</html>

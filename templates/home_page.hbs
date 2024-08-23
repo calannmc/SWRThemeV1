@@ -1,3 +1,39 @@
+<style>
+  .blocks-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .blocks-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    aspect-ratio: 1 / 1;
+  }
+
+  .blocks-item-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+  }
+
+  .blocks-item-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .blocks-item-description {
+    font-size: 14px;
+    color: #666;
+  }
+</style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
 <section id="main-content" class="section hero">
@@ -16,54 +52,51 @@
   <section class="section knowledge-base">
     <h2 class="topic_title">{{dc 'browse'}}</h2>
     <section class="categories blocks">
-      <ul class="blocks-list grid">
+      <ul class="blocks-list">
         {{#each categories}}
           {{#if ../has_multiple_categories}}
-          
             <li class="blocks-item">
               <a href='{{url}}' class="blocks-item-link">
+                <div class="blocks-item-icon">&#128196;</div> <!-- Placeholder icon -->
                 <span class="blocks-item-title">{{name}}</span>
                 <span class="blocks-item-description">{{excerpt description}}</span>
               </a>
             </li>
-           
           {{else}}
             {{#each sections}}
-     
               <li class="blocks-item">
                 <a href='{{url}}' class="blocks-item-link">
-                  <span class="blocks-item-title">
-                    {{name}}
-                  </span>
+                  <div class="blocks-item-icon">&#128196;</div> <!-- Placeholder icon -->
+                  <span class="blocks-item-title">{{name}}</span>
                   <span class="blocks-item-description">{{excerpt description}}</span>
                 </a>
               </li>
-         {{/each}}
+            {{/each}}
           {{/if}}
         {{/each}}
-         <li class="blocks-item">
+        <li class="blocks-item">
           <a href='https://swrailway.zendesk.com/hc/en-gb/requests/new?ticket_form_id=15525177480220' class="blocks-item-link">
+            <div class="blocks-item-icon">&#127976;</div> <!-- Hotel icon -->
             <span class="blocks-item-title">Claim for hotel or taxi</span>
-
           </a>
         </li>
         <li class="blocks-item">
           <a href='https://swrailway.zendesk.com/hc/en-gb/requests/new?ticket_form_id=15525228238620' class="blocks-item-link">
+            <div class="blocks-item-icon">&#9888;</div> <!-- Warning icon -->
             <span class="blocks-item-title">Claim during disruption</span>
-
           </a>
         </li>
         <li class="blocks-item">
           <a href='https://swrailway.zendesk.com/hc/en-gb/requests/new?ticket_form_id=15525136863132' class="blocks-item-link">
+            <div class="blocks-item-icon">&#128176;</div> <!-- Money bag icon -->
             <span class="blocks-item-title">Price promise</span>
-
           </a>
         </li>
-    
       </ul>
       {{pagination}}
     </section>
-
+  </section>
+</div>
 
 {{!--<div class="container">
   <section class="section knowledge-base">

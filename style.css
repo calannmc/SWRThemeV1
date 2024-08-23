@@ -1180,6 +1180,20 @@ ul {
 .intro-title{
   color:$text_color_white;
 }
+.hero-contact {
+  /*background-image: url($homepage_background_image);*/
+  background-color:$brand_color_black;
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  padding: 0 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.intro-title-contact{
+  color:$text_color_white;
+}
 .page-header {
   display: flex;
   flex-direction: column;

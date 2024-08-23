@@ -4,31 +4,34 @@
 /*fonts*/
 @font-face {
   font-family: 'WeissenhofGrotesk-Regular';
-  src: url('$assets-weissenhofgrotesk-regular-otf');
-  src: url('$assets-weissenhofgrotesk-regular-otf-otf?#iefix') format('embedded-opentype');
+  src: url('$assets-weissenhofgrotesk-regular-otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
   font-family: 'WeissenhofGrotesk-Medium';
-  src: url('$assets-weissenhofgrotesk-medium-otf');
-  src: url('$assets-weissenhofgrotesk-medium-otf?#iefix') format('embedded-opentype');
+  src: url('$assets-weissenhofgrotesk-medium-otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
   font-family: 'WeissenhofGrotesk-Bold';
-  src: url('$assets-weissenhofgrotesk-bold-otf');
-  src: url('$assets-weissenhofgrotesk-bold-otf?#iefix') format('embedded-opentype');
+  src: url('$assets-weissenhofgrotesk-bold-otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
   font-family: 'WeissenhofGrotesk-Light';
-  src: url('$assets-weissenhofgrotesk-light-otf');
-  src: url('$assets-weissenhofgrotesk-light-otf?#iefix') format('embedded-opentype');
+  src: url('$assets-weissenhofgrotesk-light-otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 html {
   line-height: 1.15;

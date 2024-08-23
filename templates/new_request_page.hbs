@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit a Request</title>
+
     <style>
         /* Breadcrumbs styling */
         .breadcrumbs {
@@ -14,14 +9,17 @@
         .section.hero-contact {
             background-color: #000;
             color: #fff;
+            text-align: left; /* Ensure the title is left-aligned */
         }
 
-        /* Form Container Styles */
+        /* Center the form and set the max width */
         .form {
-            background-color: #000; /* Black background */
+            background-color: #000; /* Default Black background */
             color: #fff; /* White text color for contrast */
             padding: 40px; /* Increased padding around the form */
             border-radius: 8px; /* Optional: rounded corners */
+            max-width: 600px; /* Maximum width for the form */
+            margin: 0 auto; /* Center the form */
         }
 
         /* Apply white text specifically to form titles */
@@ -30,25 +28,27 @@
         }
 
         /* Specific Styles for Form ID 15525136863132 */
-        .form-15525136863132 .section.hero-contact {
+        .form-15525136863132 .section.hero-contact,
+        .form-15525136863132 .form {
             background-color: #dff0d8;
             color: #3c763d;
         }
 
         /* Specific Styles for Form ID 15525177480220 */
-        .form-15525177480220 .section.hero-contact {
+        .form-15525177480220 .section.hero-contact,
+        .form-15525177480220 .form {
             background-color: #f2dede;
             color: #a94442;
         }
 
         /* Specific Styles for Form ID 15525228238620 */
-        .form-15525228238620 .section.hero-contact {
+        .form-15525228238620 .section.hero-contact,
+        .form-15525228238620 .form {
             background-color: #d9edf7;
             color: #31708f;
         }
     </style>
-</head>
-<body>
+
 
     {{breadcrumbs}}
 
@@ -81,22 +81,31 @@
                 switch(ticketFormId) {
                     case '15525136863132':
                         formTitle = 'Price Promise Request';
-                        heroElement.style.backgroundColor = '#0092CB';
+                        heroElement.style.backgroundColor = '#dff0d8';
                         heroElement.style.color = '#3c763d';
+                        formElement.style.backgroundColor = '#dff0d8';
+                        formElement.style.color = '#3c763d';
                         break;
                     case '15525177480220':
-                        formTitle = 'Claim for Taxi or Hotel';
-                        heroElement.style.backgroundColor = '#f2dede';
-                        heroElement.style.color = '#000';
-                    case '15525228238620':
                         formTitle = 'Claiming During Disruption';
-                        heroElement.style.backgroundColor = '#061b2b';
-                        heroElement.style.color = '#fff';
+                        heroElement.style.backgroundColor = '#f2dede';
+                        heroElement.style.color = '#a94442';
+                        formElement.style.backgroundColor = '#f2dede';
+                        formElement.style.color = '#a94442';
+                        break;
+                    case '15525228238620':
+                        formTitle = 'Claim for Taxi or Hotel';
+                        heroElement.style.backgroundColor = '#d9edf7';
+                        heroElement.style.color = '#31708f';
+                        formElement.style.backgroundColor = '#d9edf7';
+                        formElement.style.color = '#31708f';
                         break;
                     default:
                         formTitle = 'Submit a Request';
                         heroElement.style.backgroundColor = '#000';
                         heroElement.style.color = '#fff';
+                        formElement.style.backgroundColor = '#000';
+                        formElement.style.color = '#fff';
                         break;
                 }
                 
@@ -104,9 +113,7 @@
                 document.querySelector('.intro-title-contact').innerText = formTitle;
 
                 // Apply styles to the form container
-                formElement.style.backgroundColor = '#000'; // Ensure the background is black
-                formElement.style.color = '#fff'; // Ensure the text is white
-                formElement.style.padding = '40px'; // Increase padding
+                formElement.style.padding = '40px'; // Ensure sufficient padding
                 formElement.style.borderRadius = '8px'; // Optional: rounded corners
             }
         });

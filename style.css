@@ -1274,63 +1274,82 @@ ul {
 /***** Blocks *****/
 /* Used in Homepage#categories and Community#topics */
 
-
 .blocks-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
 .blocks-item {
-  background-color: #0092CB;
-  border: 1px solid #0092CB;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  border: none;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  aspect-ratio: 1 / 1;
+  transition: all 0.3s ease;
+}
+
+.blocks-item-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
 .blocks-item-icon {
-  font-size: 48px;
+  width: 100px;
+  height: 100px;
   margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.blocks-item-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .blocks-item-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.blocks-item-description {
-  font-size: 14px;
-  color: #666;
-}
-
-@media (min-width: 768px) {
-  .blocks-list {
-    margin: 0 -15px;
-  }
-}
-.blocks-item {
-  border: 1px solid $brand_color;
+  padding: 5px 10px;
   border-radius: 4px;
-  box-sizing: border-box;
-  color: $brand_color_white;
-  display: flex;
-  flex: 1 0 340px;
-  margin: 0 0 30px;
-  max-width: 100%;
-  text-align: center;
+  transition: background-color 0.3s ease;
+  color: {{settings.brand_color_midblue}};
 }
-@media (min-width: 768px) {
-  .blocks-item {
-    margin: 0 15px 30px;
+
+.blocks-item:hover .blocks-item-icon {
+  animation: rock 0.5s ease infinite;
+}
+
+.blocks-item:hover .blocks-item-title {
+  background-color: {{settings.brand_color_lightblue}};
+}
+
+@keyframes rock {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+@media (max-width: 768px) {
+  .blocks-list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media (max-width: 480px) {
+  .blocks-list {
+    grid-template-columns: 1fr;
+  }
+}
+
 .blocks-item:hover, .blocks-item:focus, .blocks-item:active {
   background-color: $brand_color_white;
 }

@@ -28,8 +28,8 @@
   }
 
   .blocks-item-icon {
-    width: 64px;
-    height: 64px;
+    width: 100px;
+    height: 100px;
     margin-bottom: 15px;
     transition: transform 0.3s ease;
   }
@@ -46,7 +46,7 @@
     padding: 5px 10px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-    color: $brand_color_midblue;
+    color: {{settings.brand_color_midblue}};
   }
 
   .blocks-item:hover .blocks-item-icon {
@@ -54,7 +54,7 @@
   }
 
   .blocks-item:hover .blocks-item-title {
-    background-color: $brand_color_lightblue;
+    background-color: {{settings.brand_color_lightblue}};
   }
 
   @keyframes rock {

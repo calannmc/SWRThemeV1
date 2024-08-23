@@ -1,4 +1,68 @@
+<style>
+  .blocks-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
 
+  .blocks-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    aspect-ratio: 1 / 1;
+    transition: all 0.3s ease;
+  }
+
+  .blocks-item-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .blocks-item-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+  }
+
+  .blocks-item-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .blocks-item-title {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .blocks-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .blocks-item:hover .blocks-item-icon {
+    transform: translateY(-5px);
+  }
+
+  .blocks-item:hover .blocks-item-title {
+    background-color: #f0f0f0;
+  }
+</style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
 <section id="main-content" class="section hero">

@@ -1319,7 +1319,7 @@ ul {
   border: 1px solid $brand_color;
   border-radius: 4px;
   box-sizing: border-box;
-  color: $brand_color;
+  color: $brand_color_white;
   display: flex;
   flex: 1 0 340px;
   margin: 0 0 30px;
@@ -1332,7 +1332,7 @@ ul {
   }
 }
 .blocks-item:hover, .blocks-item:focus, .blocks-item:active {
-  background-color: $brand_color;
+  background-color: $brand_color_white;
 }
 .blocks-item:hover *, .blocks-item:focus *, .blocks-item:active * {
   color: $brand_text_color;

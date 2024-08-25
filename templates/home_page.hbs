@@ -113,16 +113,19 @@
     background-size: 200% 100%;
     background-position: right bottom;
   }
-  /* Mobile-specific styles */
+/* Mobile-specific styles */
 @media (max-width: 767px) {
     .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
-        border-left: none; /* Remove the border */
-        padding-left: 16px; /* Adjust padding if necessary */
-        position: relative;
-        background: linear-gradient(to right, #C7DAE7 5px, transparent 5px) left bottom;
-        background-size: 5px 100%;
+        border-left: 4px solid #C7DAE7; /* Adjust border width if needed */
+        padding-left: 16px; /* Adjust padding to align with text */
+        margin: 0 10px 20px; /* Adjust margin for better spacing */
+        min-height: auto; /* Remove fixed height to fit content */
+        max-width: 100%; /* Ensure item takes full width on smaller screens */
+        background: linear-gradient(to right, #C7DAE7 4px, transparent 4px) left bottom;
+        background-size: 4px 100%;
         background-repeat: no-repeat;
         background-position: left bottom;
+        line-height: 1.4; /* Adjust line-height if needed to improve text alignment */
     }
 }
 </style>

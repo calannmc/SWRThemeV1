@@ -1415,11 +1415,11 @@ ul {
 }
 
 /***** Promoted articles *****/
-.promoted-articles {
+/*.promoted-articles {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-}
+}*/
 
 @media (min-width: 1024px) {
   .promoted-articles {
@@ -1484,7 +1484,7 @@ ul {
  .collapsible-sidebar-body li{
    border: none;
    border-radius: 0px;
-   border-left: 7px solid #E0ECE8;
+   border-left: 7px solid #0C3C29;
    box-sizing: border-box;
    color: rgba(0, 0, 0, 1);
    display: block;
@@ -1495,7 +1495,7 @@ ul {
    text-align: left;
    overflow: hidden;  
    padding-left: 26px;
-   background: linear-gradient(to right, #E0ECE8 50%, white 50%);
+   background: linear-gradient(to right, #0C3C29 50%, white 50%);
    background-size: 200% 100%;
    background-position: right bottom;  
  }

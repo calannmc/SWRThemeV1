@@ -113,6 +113,13 @@
     background-size: 200% 100%;
     background-position: right bottom;
   }
+  /* Mobile-specific styles */
+@media (max-width: 767px) {
+    .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
+        border-left: 4px solid #C7DAE7; /* Adjust this value as needed */
+        padding-left: 16px; /* Adjust the padding if needed */
+    }
+}
 </style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 

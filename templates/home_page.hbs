@@ -79,13 +79,16 @@
 }
 
 .blocks-item-title {
-    font-size: 20px;
-    font-weight: bold;
-    padding-top: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px;
+  transition: background-color 0.3s ease;
 }
+
 .blocks-item-title:hover, .blocks-item-title:focus, .blocks-item-title:active {
-   background-color:#C7DAE7;
+  background-color: #C7DAE7;
 }
+
 .blocks-item-description {
   font-weight: 300;
   margin: 0;
@@ -95,45 +98,75 @@
   margin-top: 10px;
 }
 
-  .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li{
-      border: none;
-    border-radius: 0px;
-    border-left: 7px solid #C7DAE7;
-    box-sizing: border-box;
-    color: rgba(0, 0, 0, 1);
-    display: block;
-    flex: 1 0 340px;
-    margin: 0 15px 30px;
-    min-height: 90px;
-    max-width: 368px;
-    text-align: left;
-    overflow: hidden;
-    padding-left: 26px;
-    background: linear-gradient(to right, #C7DAE7 50%, white 50%);
-    background-size: 200% 100%;
-    background-position: right bottom;
-  }
+.promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
+  border: none;
+  border-radius: 0px;
+  border-left: 7px solid #C7DAE7;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 1);
+  display: block;
+  flex: 1 0 340px;
+  margin: 0 15px 30px;
+  min-height: 90px;
+  max-width: 368px;
+  text-align: left;
+  overflow: hidden;
+  padding-left: 26px;
+  background: linear-gradient(to right, #C7DAE7 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
 
-  @media (max-width: 767px) {
+/* Updated styles for mobile responsiveness with fixed sizes */
+@media (max-width: 767px) {
   .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
-    flex: 1 0 100%;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 80px; /* Fixed height for mobile */
     margin: 0 0 15px;
-    min-height: auto;
-    max-width: 100%;
+    max-width: none;
+    display: flex;
+    align-items: center;
   }
 
   .promoted-articles-item a, .article-list-item a, .collapsible-sidebar-body li a {
-    padding: 15px 15px 15px 26px;
-    display: block;
+    padding: 0 15px 0 26px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
 
   .blocks-item {
-    flex: 1 0 100%;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100px; /* Fixed height for mobile */
     margin: 0 0 15px;
+    position: relative;
+    overflow: hidden;
   }
 
   .blocks-item-link {
-    padding: 15px;
+    padding: 10px;
+    height: 100%;
+  }
+
+  .blocks-item-title {
+    font-size: 16px; /* Slightly smaller font size for mobile */
+    padding: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .blocks-item-title:hover, .blocks-item-title:focus, .blocks-item-title:active {
+    background-color: rgba(199, 218, 231, 0.8); /* Semi-transparent background */
   }
 }
 </style>

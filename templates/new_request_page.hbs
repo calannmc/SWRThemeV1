@@ -1,5 +1,17 @@
 
     <style>
+
+        .form-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.form-container.ready {
+  visibility: visible;
+  opacity: 1;
+}
+
         /* Breadcrumbs styling */
         .breadcrumbs {
             padding: 10px 40px 10px 40px;
@@ -144,6 +156,12 @@
         };
 
         renderNewRequestForm(settings, props, container);
+
+        document.addEventListener("DOMContentLoaded", function() {
+  const formContainer = document.querySelector('.form-container');
+  formContainer.classList.add('ready');
+});
+
     </script>
 
 

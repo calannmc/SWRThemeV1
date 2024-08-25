@@ -116,8 +116,13 @@
   /* Mobile-specific styles */
 @media (max-width: 767px) {
     .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
-        border-left: 4px solid #C7DAE7; /* Adjust this value as needed */
-        padding-left: 16px; /* Adjust the padding if needed */
+        border-left: none; /* Remove the border */
+        padding-left: 16px; /* Adjust padding if necessary */
+        position: relative;
+        background: linear-gradient(to right, #C7DAE7 5px, transparent 5px) left bottom;
+        background-size: 5px 100%;
+        background-repeat: no-repeat;
+        background-position: left bottom;
     }
 }
 </style>

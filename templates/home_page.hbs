@@ -79,10 +79,13 @@
 }
 
 .blocks-item-title {
-  margin-bottom: 0;
-  font-size: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 8px;
 }
-
+.blocks-item-title:hover, .blocks-item-title:focus, .blocks-item-title:active {
+   background-color:
+}
 .blocks-item-description {
   font-weight: 300;
   margin: 0;
@@ -92,73 +95,24 @@
   margin-top: 10px;
 }
 
-.articles {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.article-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-}
-
-.promoted-articles-item {
-  position: relative;
-}
-
-.articles .article-link {
-  display: block;
-  padding: 20px;
-  color: inherit;
-  text-decoration: none;
-  background-color: #f9f9f9;
-  text-align: center;
-  height: 100%;
-  transition: background-color 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.articles .article-link::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 0;
-  background-color: blue;
-  z-index: -1;
-  transition: width 0.3s ease;
-}
-
-.articles .article-link:hover::before {
-  width: 100%;
-}
-
-.articles .article-link:hover {
-  color: white;
-  position: relative;
-  z-index: 1;
-}
-
-.article-list .promoted-articles-item {
-  height: 200px; /* Adjust height as needed */
-}
-
-.article-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  font-size: 18px; /* Ensure font size consistency */
-}
-
-
-
+  .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li{
+      border: none;
+    border-radius: 0px;
+    border-left: 7px solid #C7DAE7;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 1);
+    display: block;
+    flex: 1 0 340px;
+    margin: 0 15px 30px;
+    min-height: 90px;
+    max-width: 368px;
+    text-align: left;
+    overflow: hidden;
+    padding-left: 26px;
+    background: linear-gradient(to right, #C7DAE7 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+  }
 </style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
@@ -177,7 +131,7 @@
   
  {{#if promoted_articles}}
   <section class="articles">
-    <h2 style="text-align: center; color: blue;">{{t 'promoted_articles'}}</h2>
+    <h2 style="text-align: center; color: #0092CB;">{{t 'promoted_articles'}}</h2>
     <ul class="article-list promoted-articles">
       {{#each promoted_articles}}
         <li class="promoted-articles-item">

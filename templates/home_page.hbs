@@ -95,15 +95,23 @@
   margin-top: 10px;
 }
 
- .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
+ /* Container for the promoted articles */
+.promoted-articles-container {
+    display: flex; /* Ensure items are in a row on desktop */
+    flex-wrap: wrap; /* Allow items to wrap if there are too many */
+    gap: 15px; /* Space between items */
+}
+
+/* Individual promoted article item */
+.promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
     border: none;
     border-radius: 0px;
     border-left: 7px solid #C7DAE7;
     box-sizing: border-box;
     color: rgba(0, 0, 0, 1);
     display: block;
-    flex: 1 0 340px;
-    margin: 0 15px 30px;
+    flex: 1 1 340px; /* Adjust to allow items to shrink and grow */
+    margin: 0; /* Remove margin to use gap instead */
     min-height: 90px;
     max-width: 368px;
     text-align: left;
@@ -116,10 +124,14 @@
 
 /* Mobile-specific styles */
 @media (max-width: 767px) {
+    .promoted-articles-container {
+        flex-direction: column; /* Stack items in a column on mobile */
+    }
+
     .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
         border-left: 4px solid #C7DAE7; /* Adjust border width if needed */
         padding-left: 16px; /* Adjust padding to align with text */
-        margin: 0 10px 20px; /* Adjust margin for better spacing */
+        margin: 0 0 20px; /* Adjust margin for better spacing on mobile */
         min-height: auto; /* Remove fixed height to fit content */
         max-width: 100%; /* Ensure item takes full width on smaller screens */
         background: linear-gradient(to right, #C7DAE7 4px, transparent 4px) left bottom;
@@ -129,6 +141,7 @@
         line-height: 1.4; /* Adjust line-height if needed to improve text alignment */
     }
 }
+
 </style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 

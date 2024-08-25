@@ -10,12 +10,6 @@
   margin: 0 -10px; /* Ensure consistency across devices */
 }
 
-@media (min-width: 768px) {
-  .blocks-list {
-    margin: 0 -15px;
-  }
-}
-
 .blocks-item {
   border: 1px solid $brand_color;
   border-radius: 4px;
@@ -31,13 +25,14 @@
 @media (min-width: 576px) {
   .blocks-item {
     flex: 1 0 48%; /* Two items per row on small screens */
+    margin: 0 10px 15px; /* Adjusted margin for two items per row */
   }
 }
 
 @media (min-width: 768px) {
   .blocks-item {
-    flex: 1 0 31%; /* Three items per row on tablets and above */
-    margin: 0 15px 30px;
+    flex: 1 0 30%; /* Three items per row on larger screens */
+    margin: 0 15px 30px; /* Margin for three items per row */
   }
 }
 
@@ -133,10 +128,12 @@
 
 @media (min-width: 768px) {
   .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
-    flex: 1 0 31%; /* Three items per row on tablets and above */
-    margin: 0 15px 30px;
+    flex: 1 0 30%; /* Three items per row on larger screens */
+    margin: 0 15px 30px; /* Margin for three items per row */
   }
 }
+
+
 
 </style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>

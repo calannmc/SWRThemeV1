@@ -1,14 +1,7 @@
-  <style>
-        body.loading .hero-contact,
-        body.loading .form-container {
+ <style>
+        /* Hide everything initially */
+        body.loading {
             visibility: hidden;
-        }
-
-        body.loaded .hero-contact,
-        body.loaded .form-container {
-            visibility: visible;
-            opacity: 1;
-            transition: opacity 0.3s ease-in-out;
         }
 
         /* Breadcrumbs styling */
@@ -77,12 +70,11 @@
                         updatePageStyles(ticketFormId, 'Submit a Request');
                     });
             } else {
-                document.body.classList.remove('loading');
-                document.body.classList.add('loaded');
+                updatePageStyles(); // Call to ensure the page becomes visible
             }
         });
 
-        function updatePageStyles(ticketFormId, formTitle) {
+        function updatePageStyles(ticketFormId = null, formTitle = 'Submit a Request') {
             const heroElement = document.querySelector('.hero-contact');
             const formElement = document.querySelector('.form');
 
@@ -118,9 +110,9 @@
                     break;
             }
 
-            // Mark the page as fully loaded
+            // Show the page content after styles are applied
             document.body.classList.remove('loading');
-            document.body.classList.add('loaded');
+            document.body.style.visibility = 'visible';
         }
 
         // Helper function to apply text color to all child elements within the hero and form

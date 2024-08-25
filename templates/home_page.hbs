@@ -1,5 +1,3 @@
-<style>
-
 /* Used in Homepage#categories and Community#topics */
 .blocks-list {
   display: flex;
@@ -87,8 +85,11 @@
 
 .blocks-item-title:hover, .blocks-item-title:focus, .blocks-item-title:active {
   background-color: #C7DAE7;
-  width:23.3vh;
-  height:5.5vh;
+  width: 100%; /* Changed from fixed width to 100% */
+  height: auto; /* Changed from fixed height to auto */
+  white-space: nowrap; /* Ensure the title stays on one line */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflowing text */
 }
 
 .blocks-item-description {
@@ -119,12 +120,12 @@
   background-position: right bottom;
 }
 
-/* Updated styles for mobile responsiveness with fixed sizes */
-@media (max-width:1023px) {
+/* Updated styles for mobile responsiveness */
+@media (max-width: 1023px) {
   .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
     flex: 0 0 auto;
     width: 100%;
-    height: 80px; /* Fixed height for mobile */
+    height: auto; /* Changed from fixed height to auto */
     margin: 0 0 15px;
     max-width: none;
     display: flex;
@@ -138,12 +139,28 @@
     width: 100%;
     height: 100%;
   }
+
   .blocks-item-title:hover, .blocks-item-title:focus, .blocks-item-title:active {
-  background-color: #C7DAE7;
-  width:20.3vh;
-  height:3vh;
+    width: 100%; /* Changed from fixed width to 100% */
+    height: auto; /* Changed from fixed height to auto */
+    white-space: nowrap; /* Ensure the title stays on one line */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+  }
 }
 
+/* New styles to prevent icon shifting */
+.blocks-item-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px; /* Adjust this value as needed */
+  margin-bottom: 10px;
+}
+
+.blocks-item-icon img {
+  max-height: 100%;
+  width: auto;
 }
 </style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>

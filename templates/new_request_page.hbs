@@ -11,7 +11,10 @@
   visibility: visible;
   opacity: 1;
 }
-
+   /* Apply color to description text */
+    .form-description {
+        color: #ffffff; /* Replace with your desired color */
+    }
         /* Breadcrumbs styling */
         .breadcrumbs {
             padding: 10px 40px 10px 40px;
@@ -19,8 +22,8 @@
 
         /* Default Styles */
         .section.hero-contact {
-            background-color: #000;
-            color: #fff;
+            background-color: {{settings.brand_color}}; /* Default Black background */
+            color: {{settings.brand_color_white}}; /* White text color for contrast */
             text-align: left; /* Ensure the title is left-aligned */
         }
 

@@ -92,11 +92,33 @@
   margin-top: 10px;
 }
 
+.articles {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.article-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.promoted-articles-item {
+  position: relative;
+}
+
 .articles .article-link {
   display: block;
+  padding: 20px;
   color: inherit;
   text-decoration: none;
-  padding: 5px;
+  background-color: #f9f9f9;
+  text-align: center;
+  height: 100%;
+  transition: background-color 0.3s ease;
   position: relative;
   overflow: hidden;
 }
@@ -123,6 +145,19 @@
   z-index: 1;
 }
 
+.article-list .promoted-articles-item {
+  height: 200px; /* Adjust height as needed */
+}
+
+.article-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 18px; /* Ensure font size consistency */
+}
+
+
 
 </style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
@@ -140,7 +175,7 @@
 </section>
   <div class="container">
   
-  {{#if promoted_articles}}
+ {{#if promoted_articles}}
   <section class="articles">
     <h2 style="text-align: center; color: blue;">{{t 'promoted_articles'}}</h2>
     <ul class="article-list promoted-articles">
@@ -161,6 +196,7 @@
     </ul>
   </section>
 {{/if}}
+</div>
 
 
 <div class="container">

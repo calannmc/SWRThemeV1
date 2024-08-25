@@ -52,63 +52,85 @@
             </div>
         </div>
     </div>
+<script>
+    // Embed settings into a global object
+    window.settings = {
+        brandColor: '{{settings.brand_color}}'
+    };
+</script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const params = new URLSearchParams(window.location.search);
-            const ticketFormId = params.get('ticket_form_id');
 
-            if (ticketFormId) {
-                fetch(`/api/v2/ticket_forms/${ticketFormId}.json`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const formName = data.ticket_form.name;
-                        updatePageStyles(ticketFormId, formName);
-                    })
-                    .catch(() => {
-                        console.error('Error fetching the form data');
-                        updatePageStyles(ticketFormId, 'Submit a Request');
-                    });
-            } else {
-                updatePageStyles(); // Call to ensure the page becomes visible
-            }
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const ticketFormId = params.get('ticket_form_id');
 
-        function updatePageStyles(ticketFormId = null, formTitle = 'Submit a Request') {
-            const heroElement = document.querySelector('.hero-contact');
-            const formElement = document.querySelector('.form');
+    if (ticketFormId) {
+        fetch(`/api/v2/ticket_forms/${ticketFormId}.json`)
+            .then(response => response.json())
+            .then(data => {
+                const formName = data.ticket_form.name;
+                updatePageStyles(ticketFormId, formName);
+            })
+            .catch(() => {
+                console.error('Error fetching the form data');
+                updatePageStyles(ticketFormId, 'Submit a Request');
+            });
+    } else {
+        updatePageStyles(); // Call to ensure the page becomes visible
+    }
+});
 
-            document.querySelector('.intro-title-contact').innerText = formTitle;
+function updatePageStyles(ticketFormId = null, formTitle = 'Submit a Request') {
+    const heroElement = document.querySelector('.hero-contact');
+    const formElement = document.querySelector('.form');
 
-            // Apply styles to hero section and form based on form ID
-            switch(ticketFormId) {
-                case '15525136863132':
-                    heroElement.style.backgroundColor = {{settings.brand_color}};
-                    heroElement.style.color = '#ffffff';
-                    formElement.style.backgroundColor = {{settings.brand_color}};
-                    formElement.style.color = '#ffffff';
-                    break;
-                case '15525228238620':
-                    heroElement.style.backgroundColor = {{settings.brand_color}};
-                    heroElement.style.color = '#000000';
-                    applyTextColor(heroElement, '#000000');  // Ensure all hero text is #000000
-                    formElement.style.backgroundColor = {{settings.brand_color}};
-                    formElement.style.color = '#000000';
-                    applyTextColor(formElement, '#000000');  // Apply text color to all text within the form
-                    break;
-                case '15525177480220':
-                    heroElement.style.backgroundColor = '#061b2b';
-                    heroElement.style.color = '#ffffff';
-                    formElement.style.backgroundColor = '#061b2b';
-                    formElement.style.color = '#ffffff';
-                    break;
-                default:
-                    heroElement.style.backgroundColor = '#000000';
-                    heroElement.style.color = '#ffffff';
-                    formElement.style.backgroundColor = '#000000';
-                    formElement.style.color = '#ffffff';
-                    break;
-            }
+    document.querySelector('.intro-title-contact').innerText = formTitle;
+
+    const brandColor = window.settings.brandColor; // Access the brand color from the global settings
+
+    // Apply styles to hero section and form based on form ID
+    switch(ticketFormId) {
+        case '15525136863132':
+            heroElement.style.backgroundColor = brandColor;
+            heroElement.style.color = '#ffffff';
+            formElement.style.backgroundColor = brandColor;
+            formElement.style.color = '#ffffff';
+            break;
+        case '15525228238620':
+            heroElement.style.backgroundColor = brandColor;
+            heroElement.style.color = '#000000';
+            applyTextColor(heroElement, '#000000');  // Ensure all hero text is #000000
+            formElement.style.backgroundColor = brandColor;
+            formElement.style.color = '#000000';
+            applyTextColor(formElement, '#000000');  // Apply text color to all text within the form
+            break;
+        case '15525177480220':
+            heroElement.style.backgroundColor = '#061b2b';
+            heroElement.style.color = '#ffffff';
+            formElement.style.backgroundColor = '#061b2b';
+            formElement.style.color = '#ffffff';
+            break;
+        default:
+            heroElement.style.backgroundColor = '#000000';
+            heroElement.style.color = '#ffffff';
+            formElement.style.backgroundColor = '#000000';
+            formElement.style.color = '#ffffff';
+            break;
+    }
+
+    // Show the page content after styles are applied
+    document.body.classList.remove('loading');
+    document.body.style.visibility = 'visible';
+}
+
+// Helper function to apply text color to all child elements within the hero and form
+function applyTextColor(element, color) {
+    element.querySelectorAll('h1, h2, h3, p, label, span, div').forEach(function(child) {
+        child.style.color = color;
+    });
+}
+
 
             // Show the page content after styles are applied
             document.body.classList.remove('loading');

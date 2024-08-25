@@ -1484,7 +1484,7 @@ ul {
  .collapsible-sidebar-body li{
    border: none;
    border-radius: 0px;
-   border-left: 7px solid #0C3C29;
+   border-left: 7px solid #C7DAE7;
    box-sizing: border-box;
    color: rgba(0, 0, 0, 1);
    display: block;
@@ -1495,7 +1495,7 @@ ul {
    text-align: left;
    overflow: hidden;  
    padding-left: 26px;
-   background: linear-gradient(to right, #0C3C29 50%, white 50%);
+   background: linear-gradient(to right, #C7DAE7 50%, white 50%);
    background-size: 200% 100%;
    background-position: right bottom;  
  }

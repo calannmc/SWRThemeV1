@@ -42,6 +42,17 @@
 .menu-list-mobile-items .nav-button:hover {
   background-color: #0056b3;
 }
+.back-to-main {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 20px; /* Adjust spacing before the user nav */
+}
+
+.back-to-main::before {
+  content: "\276E"; /* Unicode for the left-facing chevron */
+  margin-right: 8px; /* Space between chevron and text */
+}
+
 
 </style>
 
@@ -69,6 +80,10 @@
       <li><a href="https://www.southwesternrailway.com/travelling-with-us">Travelling with us</a></li>
       <li><a href="https://www.southwesternrailway.com/destinations-and-offers">Destinations and offers</a></li>
       <li><a href="https://www.southwesternrailway.com/train-tickets">Help and support</a></li>
+      <a href="https://www.southwesternrailway.com/" class="nav-button back-to-main">
+  &#x276E; Back to Main Site
+</a>
+
       {{!--{{#unless signed_in}}
         <li>
           {{#link "sign_in" class="sign-in"}}

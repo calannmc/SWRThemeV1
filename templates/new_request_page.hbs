@@ -1,14 +1,14 @@
-
-    <style>
-        .form-container {
+  <style>
+        body.loading .hero-contact,
+        body.loading .form-container {
             visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
         }
 
-        .form-container.ready {
+        body.loaded .hero-contact,
+        body.loaded .form-container {
             visibility: visible;
             opacity: 1;
+            transition: opacity 0.3s ease-in-out;
         }
 
         /* Breadcrumbs styling */
@@ -39,7 +39,7 @@
         }
     </style>
 </head>
-<body>
+<body class="loading">
     {{breadcrumbs}}
 
     <section id="main-content" class="section hero-contact">
@@ -76,6 +76,9 @@
                         console.error('Error fetching the form data');
                         updatePageStyles(ticketFormId, 'Submit a Request');
                     });
+            } else {
+                document.body.classList.remove('loading');
+                document.body.classList.add('loaded');
             }
         });
 
@@ -115,9 +118,9 @@
                     break;
             }
 
-            // Apply styles to the form container
-            formElement.style.padding = '40px'; // Ensure sufficient padding
-            formElement.style.borderRadius = '8px'; // Optional: rounded corners
+            // Mark the page as fully loaded
+            document.body.classList.remove('loading');
+            document.body.classList.add('loaded');
         }
 
         // Helper function to apply text color to all child elements within the hero and form
@@ -126,11 +129,6 @@
                 child.style.color = color;
             });
         }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const formContainer = document.querySelector('.form-container');
-            formContainer.classList.add('ready');
-        });
     </script>
 
     <script type="module">
@@ -163,4 +161,3 @@
 
         renderNewRequestForm(settings, props, container);
     </script>
-

@@ -7,6 +7,7 @@
   justify-content: flex-start;
   list-style: none;
   padding: 0;
+  margin: 0 -10px; /* Ensure consistency across devices */
 }
 
 @media (min-width: 768px) {
@@ -21,14 +22,21 @@
   box-sizing: border-box;
   color: $brand_color;
   display: flex;
-  flex: 1 0 340px;
-  margin: 0 0 30px;
+  flex: 1 0 100%; /* Full width on mobile */
+  margin: 0 0 15px; /* Smaller margin on mobile */
   max-width: 100%;
   text-align: center;
 }
 
+@media (min-width: 576px) {
+  .blocks-item {
+    flex: 1 0 48%; /* Two items per row on small screens */
+  }
+}
+
 @media (min-width: 768px) {
   .blocks-item {
+    flex: 1 0 31%; /* Three items per row on tablets and above */
     margin: 0 15px 30px;
   }
 }
@@ -60,7 +68,7 @@
 
 .blocks-item-link {
   color: $brand_color;
-  padding: 20px 30px;
+  padding: 15px 20px; /* Reduced padding on mobile */
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -79,14 +87,16 @@
 }
 
 .blocks-item-title {
-    font-size: 20px;
-    font-weight: bold;
-    padding-top: 8px;
+  font-size: 18px; /* Smaller font on mobile */
+  font-weight: bold;
+  padding-top: 8px;
 }
+
 .blocks-item-title:hover, .blocks-item-title:focus, .blocks-item-title:active {
-   background-color:#C7DAE7;
-   width: 360px;
+  background-color:#C7DAE7;
+  width: auto; /* Removed fixed width */
 }
+
 .blocks-item-description {
   font-weight: 300;
   margin: 0;
@@ -96,24 +106,38 @@
   margin-top: 10px;
 }
 
-  .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li{
-      border: none;
-    border-radius: 0px;
-    border-left: 7px solid #C7DAE7;
-    box-sizing: border-box;
-    color: rgba(0, 0, 0, 1);
-    display: block;
-    flex: 1 0 340px;
-    margin: 0 15px 30px;
-    min-height: 90px;
-    max-width: 368px;
-    text-align: left;
-    overflow: hidden;
-    padding-left: 26px;
-    background: linear-gradient(to right, #C7DAE7 50%, white 50%);
-    background-size: 200% 100%;
-    background-position: right bottom;
+.promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
+  border: none;
+  border-radius: 0px;
+  border-left: 7px solid #C7DAE7;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 1);
+  display: block;
+  flex: 1 0 100%; /* Full width on mobile */
+  margin: 0 0 15px; /* Smaller margin on mobile */
+  min-height: 90px;
+  max-width: 100%;
+  text-align: left;
+  overflow: hidden;
+  padding-left: 26px;
+  background: linear-gradient(to right, #C7DAE7 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+@media (min-width: 576px) {
+  .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
+    flex: 1 0 48%; /* Two items per row on small screens */
   }
+}
+
+@media (min-width: 768px) {
+  .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
+    flex: 1 0 31%; /* Three items per row on tablets and above */
+    margin: 0 15px 30px;
+  }
+}
+
 </style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 

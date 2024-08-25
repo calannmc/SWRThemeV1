@@ -113,6 +113,29 @@
     background-size: 200% 100%;
     background-position: right bottom;
   }
+
+  @media (max-width: 767px) {
+  .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
+    flex: 1 0 100%;
+    margin: 0 0 15px;
+    min-height: auto;
+    max-width: 100%;
+  }
+
+  .promoted-articles-item a, .article-list-item a, .collapsible-sidebar-body li a {
+    padding: 15px 15px 15px 26px;
+    display: block;
+  }
+
+  .blocks-item {
+    flex: 1 0 100%;
+    margin: 0 0 15px;
+  }
+
+  .blocks-item-link {
+    padding: 15px;
+  }
+}
 </style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 

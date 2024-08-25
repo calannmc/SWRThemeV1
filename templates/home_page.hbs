@@ -1,49 +1,38 @@
 <style>
 
-/* General styling for the list */
+/* Used in Homepage#categories and Community#topics */
 .blocks-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
-/* Default styles for blocks-item (Mobile - 1 column) */
+@media (min-width: 768px) {
+  .blocks-list {
+    margin: 0 -15px;
+  }
+}
+
 .blocks-item {
   border: 1px solid $brand_color;
   border-radius: 4px;
   box-sizing: border-box;
   color: $brand_color;
   display: flex;
-  flex: 1 0 100%; /* Full width by default */
+  flex: 1 0 340px;
   margin: 0 0 30px;
   max-width: 100%;
   text-align: center;
 }
 
-/* Tablet styles (min-width: 768px) - 2 columns */
 @media (min-width: 768px) {
-  .blocks-list {
-    margin: 0 -15px;
-  }
-
   .blocks-item {
-    flex: 1 0 calc(50% - 30px); /* Two columns with space between */
     margin: 0 15px 30px;
   }
 }
 
-/* Desktop styles (min-width: 1024px) - 3 columns */
-@media (min-width: 1024px) {
-  .blocks-item {
-    flex: 1 0 calc(33.333% - 30px); /* Three columns with space between */
-    margin: 0 15px 30px;
-  }
-}
-
-/* Hover/Focus/Active states */
 .blocks-item:hover, .blocks-item:focus, .blocks-item:active {
   background-color: $brand_color;
 }
@@ -53,7 +42,6 @@
   text-decoration: none;
 }
 
-/* Internal block item styling */
 .blocks-item-internal {
   background-color: transparent;
   border: 1px solid #ddd;
@@ -91,15 +79,13 @@
 }
 
 .blocks-item-title {
-  font-size: 20px;
-  font-weight: bold;
-  padding-top: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 8px;
 }
-
 .blocks-item-title:hover, .blocks-item-title:focus, .blocks-item-title:active {
-  background-color:#C7DAE7;
+   background-color:#C7DAE7;
 }
-
 .blocks-item-description {
   font-weight: 300;
   margin: 0;
@@ -109,26 +95,24 @@
   margin-top: 10px;
 }
 
-/* Styling for promoted articles */
-.promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
-  border: none;
-  border-radius: 0px;
-  border-left: 7px solid #C7DAE7;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 1);
-  display: block;
-  flex: 1 0 340px;
-  margin: 0 15px 30px;
-  min-height: 90px;
-  max-width: 368px;
-  text-align: left;
-  overflow: hidden;
-  padding-left: 26px;
-  background: linear-gradient(to right, #C7DAE7 50%, white 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-}
-
+  .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li{
+      border: none;
+    border-radius: 0px;
+    border-left: 7px solid #C7DAE7;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 1);
+    display: block;
+    flex: 1 0 340px;
+    margin: 0 15px 30px;
+    min-height: 90px;
+    max-width: 368px;
+    text-align: left;
+    overflow: hidden;
+    padding-left: 26px;
+    background: linear-gradient(to right, #C7DAE7 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+  }
 </style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 

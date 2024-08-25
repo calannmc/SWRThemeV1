@@ -1,13 +1,27 @@
 <style>
 
-/* Used in Homepage#categories and Community#topics */
+/* General container and item settings */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Space between items */
+  margin: 0 auto; /* Center the container if needed */
+  padding: 0;
+}
+
+.section {
+  flex: 1 0 100%; /* Full width for sections */
+  padding: 0 15px; /* Add some padding for better spacing */
+}
+
+/* Flex settings for blocks-list and blocks-item */
 .blocks-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  gap: 15px; /* Space between items */
   list-style: none;
   padding: 0;
-  margin: 0 -10px; /* Ensure consistent spacing */
+  margin: 0;
 }
 
 .blocks-item {
@@ -17,9 +31,9 @@
   color: $brand_color;
   display: flex;
   flex: 1 0 100%; /* Full width on mobile */
-  margin: 0 0 15px; /* Margin for mobile */
   max-width: 100%;
   text-align: center;
+  margin: 0 0 15px; /* Margin for mobile */
 }
 
 @media (min-width: 576px) {
@@ -36,36 +50,48 @@
   }
 }
 
-
-
-.blocks-item:hover, .blocks-item:focus, .blocks-item:active {
-  background-color: $brand_color;
+/* Styling for promoted articles */
+.promoted-articles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Space between items */
 }
 
-.blocks-item:hover *, .blocks-item:focus *, .blocks-item:active * {
-  color: $brand_text_color;
-  text-decoration: none;
+.promoted-articles-item {
+  border: none;
+  border-radius: 0;
+  border-left: 7px solid #C7DAE7;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 1);
+  display: block;
+  flex: 1 0 30%; /* One-third of the width */
+  margin: 0 15px 30px; /* Margin for spacing between items */
+  min-height: 90px;
+  max-width: calc(33.33% - 30px); /* Adjust to account for margins */
+  text-align: left;
+  overflow: hidden;
+  padding-left: 26px;
+  background: linear-gradient(to right, #C7DAE7 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
 }
 
-.blocks-item-internal {
-  background-color: transparent;
-  border: 1px solid #ddd;
+@media (min-width: 576px) {
+  .promoted-articles-item {
+    flex: 1 0 48%; /* Two items per row on small screens */
+  }
 }
 
-.blocks-item-internal .icon-lock {
-  height: 15px;
-  width: 15px;
-  bottom: 5px;
-  position: relative;
+@media (min-width: 768px) {
+  .promoted-articles-item {
+    flex: 1 0 30%; /* Three items per row on larger screens */
+  }
 }
 
-.blocks-item-internal a {
-  color: $text_color;
-}
-
+/* Styling for item links and hover states */
 .blocks-item-link {
   color: $brand_color;
-  padding: 15px 20px; /* Reduced padding on mobile */
+  padding: 15px 20px; /* Padding for links */
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -84,14 +110,9 @@
 }
 
 .blocks-item-title {
-  font-size: 18px; /* Adjusted font size */
+  font-size: 18px; /* Font size for titles */
   font-weight: bold;
   padding-top: 8px;
-}
-
-.blocks-item-title:hover, .blocks-item-title:focus, .blocks-item-title:active {
-  background-color:#C7DAE7;
-  width: auto; /* Adjusted width */
 }
 
 .blocks-item-description {
@@ -103,53 +124,33 @@
   margin-top: 10px;
 }
 
-.promoted-articles-item {
-  border: none;
-  border-radius: 0;
-  border-left: 7px solid #C7DAE7;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 1);
-  display: block;
-  flex: 1 0 30%; /* One-third of the width */
-  margin: 0 15px 30px; /* Margin for spacing between items */
-  min-height: 90px;
-  max-width: 100%;
-  text-align: left;
-  overflow: hidden;
-  padding-left: 26px;
-  background: linear-gradient(to right, #C7DAE7 50%, white 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
+/* Internal item styling */
+.blocks-item-internal {
+  background-color: transparent;
+  border: 1px solid #ddd;
 }
 
-@media (min-width: 576px) {
-  .promoted-articles-item {
-    flex: 1 0 48%; /* Two items per row on small screens */
-  }
+.blocks-item-internal .icon-lock {
+  height: 15px;
+  width: 15px;
+  bottom: 5px;
+  position: relative;
 }
 
-@media (min-width: 768px) {
-  .promoted-articles-item {
-    flex: 1 0 30%; /* Three items per row on larger screens */
-    margin: 0 15px 30px; /* Margin for spacing between items */
-  }
+.blocks-item-internal a {
+  color: $text_color;
 }
 
-/* Additional adjustments */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* Space between items */
+/* Hover states for promoted articles */
+.promoted-articles-item:hover, .promoted-articles-item:focus, .promoted-articles-item:active {
+  background-color: $brand_color;
 }
 
-.section {
-  flex: 1 0 100%; /* Full width for sections */
+.promoted-articles-item:hover *, .promoted-articles-item:focus *, .promoted-articles-item:active * {
+  color: $brand_text_color;
+  text-decoration: none;
 }
 
-.promoted-articles {
-  display: flex;
-  flex-wrap: wrap;
-}
 
 
 

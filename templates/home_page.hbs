@@ -95,53 +95,24 @@
   margin-top: 10px;
 }
 
- /* General Styles */
-.promoted-articles-container {
-    display: flex; /* Ensure items are in a row on desktop */
-    flex-wrap: wrap; /* Allow items to wrap if there are too many */
-    gap: 15px; /* Space between items */
-    padding: 0;
-    margin: 0; /* Ensure no extra margin is applied */
-}
-
-.promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
-    border: none;
-    border-radius: 0;
+  .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li{
+      border: none;
+    border-radius: 0px;
     border-left: 7px solid #C7DAE7;
     box-sizing: border-box;
     color: rgba(0, 0, 0, 1);
     display: block;
-    flex: 1 1 340px; /* Allow items to grow and shrink with a basis of 340px */
-    margin: 0; /* Remove margin to use gap instead */
-    min-height: 90px; /* Minimum height on desktop */
-    max-width: 368px; /* Maximum width on desktop */
+    flex: 1 0 340px;
+    margin: 0 15px 30px;
+    min-height: 90px;
+    max-width: 368px;
     text-align: left;
     overflow: hidden;
     padding-left: 26px;
     background: linear-gradient(to right, #C7DAE7 50%, white 50%);
     background-size: 200% 100%;
     background-position: right bottom;
-}
-
-/* Mobile-specific styles */
-@media (max-width: 767px) {
-    .promoted-articles-container {
-        flex-direction: column; /* Stack items vertically on mobile */
-    }
-
-    .promoted-articles-item, .article-list-item, .collapsible-sidebar-body li {
-        border-left: 4px solid #C7DAE7; /* Thinner border on mobile */
-        padding-left: 16px; /* Adjust padding on mobile */
-        margin: 0 0 20px; /* Adjust margin for spacing on mobile */
-        min-height: auto; /* Allow height to adjust based on content */
-        max-width: 100%; /* Ensure item takes full width on smaller screens */
-        background: linear-gradient(to right, #C7DAE7 4px, transparent 4px) left bottom;
-        background-size: 4px 100%;
-        background-repeat: no-repeat;
-        background-position: left bottom;
-        line-height: 1.4; /* Adjust line-height for better text alignment */
-    }
-}
+  }
 </style>
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
@@ -159,7 +130,6 @@
   <div class="container">
   
  {{#if promoted_articles}}
-
   <section class="articles">
     <h2 style="text-align: center; color: #0092CB;">{{t 'promoted_articles'}}</h2>
     <ul class="article-list promoted-articles">
@@ -181,7 +151,6 @@
   </section>
 {{/if}}
 </div>
-
 
 
 <div class="container">

@@ -1469,6 +1469,69 @@ ul {
   }
 }
 
+/* Promoted articles */
+
+.promoted-articles {
+  visibility: hidden;  
+ }
+ 
+ .promoted-articles,
+ .article-list,
+ .collapsible-sidebar-body {
+   margin: 0 -15px;  
+ }
+ 
+ .promoted-articles-item,
+ .article-list-item,
+ .collapsible-sidebar-body li{
+   border: none;
+   border-radius: 0px;
+   border-left: 7px solid #E0ECE8;
+   box-sizing: border-box;
+   color: rgba(0, 0, 0, 1);
+   display: block;
+   flex: 1 0 340px;
+   margin: 0 15px 30px;
+   min-height: 90px;
+   max-width: 368px;
+   text-align: left;
+   overflow: hidden;  
+   padding-left: 26px;
+   background: linear-gradient(to right, #E0ECE8 50%, white 50%);
+   background-size: 200% 100%;
+   background-position: right bottom;  
+ }
+ 
+ .promoted-articles-item:hover,
+ .article-list-item:hover,
+ .collapsible-sidebar-body li:hover{
+   background-position: left bottom;
+   transition: all .5s ease-out;
+ }
+ 
+ .promoted-articles-item a,
+ .article-list-item a,
+ .collapsible-sidebar-body li a{
+   padding: 16px 0;
+   display: block;
+   font-size: 18px;
+   max-width: 100%;
+   color: #0C3C29;
+   text-decoration: none !important;
+   border-bottom: 0 !important;
+ }
+ 
+ 
+ @media (max-width: 1024px) {  
+   .promoted-articles-item, 
+   .article-list-item, 
+   .collapsible-sidebar-body li{
+     max-width: 90%;
+     width: auto;
+     flex: none;
+   }
+ }
+
 /***** Community section in homepage *****/
 .community {
   text-align: center;

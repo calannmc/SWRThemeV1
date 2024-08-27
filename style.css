@@ -1162,38 +1162,46 @@ ul {
 /***** Hero component *****/
 .hero {
   /*background-image: url($homepage_background_image);*/
-  background-color:$brand_color_midblue;
+  background-color: $brand_color_midblue;
   background-position: center;
   background-size: cover;
-  height: 360px;
-  padding: 0 20px;
-  text-align: center;
+  min-height: 360px; /* Changed height to min-height */
+  padding: 20px; /* Adjusted padding to place text at the top */
+  text-align: left; /* Align text to the left */
   width: 100%;
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
 }
+
 .hero-inner {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
   max-width: 610px;
-  margin: 0 auto;
+  margin: 0;
 }
-.intro-title{
-  color:$text_color_white;
+
+.intro-title {
+  color: $text_color_white;
+  white-space: nowrap; /* Ensure text is on one line */
 }
+
 .hero-contact {
   /*background-image: url($homepage_background_image);*/
-  background-color:$brand_color_darkblue;
+  background-color: $brand_color_darkblue;
   background-position: center;
   background-size: cover;
   height: 300px;
-  padding: 0 20px;
+  padding: 20px; /* Adjusted padding to place text at the top */
   text-align: left;
   width: 100%;
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
 }
 
-.intro-title-contact{
-  color:$text_color_white;
+.intro-title-contact {
+  color: $text_color_white;
+  white-space: nowrap; /* Ensure text is on one line */
 }
+
 .page-header {
   display: flex;
   flex-direction: column;

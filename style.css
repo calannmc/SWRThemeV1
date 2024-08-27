@@ -1221,6 +1221,7 @@ ul {
 
   .intro-title {
     white-space: normal; /* Allow text to wrap on smaller screens */
+    font-size:32px;
   }
 
   .hero-contact {
@@ -1231,6 +1232,7 @@ ul {
 
   .intro-title-contact {
     white-space: normal; /* Allow text to wrap on smaller screens */
+    font-size:32px;
   }
 }
 

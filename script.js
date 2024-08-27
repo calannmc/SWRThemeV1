@@ -18,6 +18,7 @@
   }
 
   // Navigation
+ 
 
   window.addEventListener("DOMContentLoaded", () => {
     const menuButton = document.querySelector(".header .menu-button-mobile");

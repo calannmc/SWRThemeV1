@@ -128,9 +128,7 @@
                 child.style.color = color;
             });
         }
-    </script>
-
-  <script type="module">
+    <script type="module">
     import { renderNewRequestForm } from "new-request-form";
 
     const container = document.getElementById("new-request-form");
@@ -166,19 +164,23 @@
         
         // Listen for the form submission event
         const form = document.querySelector('#new-request-form form'); // Adjust the selector if needed
+
         if (form) {
+            // Listen for the Zendesk form submit event
             form.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent the default form submission if necessary
-
-                // Perform form submission logic here (if necessary)
-
-                // Redirect after form submission
-                window.location.href = 'https://www.southwesternrailway.com/';
+                // Allow the form to submit as usual, do not prevent default submission
+                // Monitor the form submission completion
+                const formSubmitInterval = setInterval(() => {
+                    // Check if the form submission process is complete
+                    if (document.querySelector('.zd-form-submission-success-message')) {
+                        clearInterval(formSubmitInterval);
+                        // Redirect to the desired URL
+                        window.location.href = 'https://www.southwesternrailway.com/';
+                    }
+                }, 1000); // Check every 1 second for submission completion
             });
         }
     });
 </script>
-
-    </script>
 
 

@@ -1176,7 +1176,8 @@ ul {
 .hero-inner {
   position: relative;
   max-width: 610px;
-  margin: 0;
+ padding-left:16rem;
+ padding-top:2rem;
 }
 
 .intro-title {
@@ -1200,6 +1201,35 @@ ul {
 .intro-title-contact {
   color: $text_color_white;
   white-space: nowrap; /* Ensure text is on one line */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .hero {
+    text-align: center; /* Center text on mobile */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+  }
+
+  .hero-inner {
+    margin: 0 auto;
+    transform: none; /* Remove vertical transformation */
+    top: auto; /* Remove top position */
+  }
+
+  .intro-title {
+    white-space: normal; /* Allow text to wrap on smaller screens */
+  }
+
+  .hero-contact {
+    text-align: center; /* Center text on mobile */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+  }
+
+  .intro-title-contact {
+    white-space: normal; /* Allow text to wrap on smaller screens */
+  }
 }
 
 .page-header {

@@ -1,85 +1,138 @@
-<style>
-    .form-container {
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
 
-    .form-container.ready {
-        visibility: visible;
-        opacity: 1;
-    }
+    <style>
 
-    /* Apply color to description text */
-    .cmCBdM {
+        .form-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.forms.file_upload{
+    color:#fff;
+    border:#fff;
+}
+.form-container.ready {
+  visibility: visible;
+  opacity: 1;
+}
+   /* Apply color to description text */
+    .cmCBdM  {
         color: #ffffff; /* Replace with your desired color */
     }
+        /* Breadcrumbs styling */
+        .breadcrumbs {
+            padding: 10px 40px 10px 40px;
+        }
 
-    /* Breadcrumbs styling */
-    .breadcrumbs {
-        padding: 10px 40px 10px 40px;
-    }
+        /* Default Styles */
+        .section.hero-contact {
+            background-color: {{settings.brand_color}}; /* Default Black background */
+            color: {{settings.brand_color_white}}; /* White text color for contrast */
+            text-align: left; /* Ensure the title is left-aligned */
+        }
 
-    /* Default Styles */
-    .section.hero-contact {
-        background-color: {{settings.brand_color}}; /* Default Black background */
-        color: {{settings.brand_color_white}}; /* White text color for contrast */
-        text-align: left; /* Ensure the title is left-aligned */
-    }
+        /* Center the form and set the max width */
+        .form {
+            background-color: {{settings.brand_color}}; /* Default Black background */
+            color: {{settings.brand_color_white}}; /* White text color for contrast */
+            padding: 40px; /* Increased padding around the form */
+            border-radius: 8px; /* Optional: rounded corners */
+            max-width: 600px; /* Maximum width for the form */
+            margin: 0 auto; /* Center the form */
+        }
 
-    /* Center the form and set the max width */
-    .form {
-        background-color: {{settings.brand_color}}; /* Default Black background */
-        color: {{settings.brand_color_white}}; /* White text color for contrast */
-        padding: 40px; /* Increased padding around the form */
-        border-radius: 8px; /* Optional: rounded corners */
-        max-width: 600px; /* Maximum width for the form */
-        margin: 0 auto; /* Center the form */
-    }
+        /* Apply white text specifically to form titles */
+        .form h1, .form h2, .form h3, .form label {
+            color: #fff;
+        }
+    </style>
 
-    /* Apply white text specifically to form titles */
-    .form h1, .form h2, .form h3, .form label {
-        color: #fff;
-    }
 
-    /* Make attachments and submit button borders white */
-    input[type="file"],
-    button[type="submit"] {
-        border: 2px solid #ffffff; /* White border */
-    }
+    {{breadcrumbs}}
 
-    button[type="submit"] {
-        color: #ffffff; /* White text color */
-        background-color: transparent; /* Transparent background */
-        padding: 10px 20px; /* Add padding */
-        border-radius: 4px; /* Optional rounded corners */
-        cursor: pointer;
-    }
+    <section id="main-content" class="section hero-contact">
+        <div class="hero-inner">
+            <h1 class="intro-title-contact">{{t 'submit_a_request'}}</h1>
+            <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+        </div>
+    </section>
 
-    button[type="submit"]:hover {
-        background-color: rgba(255, 255, 255, 0.1); /* Slight white background on hover */
-    }
-</style>
+    <div class="container-divider"></div>
 
-{{breadcrumbs}}
-
-<section id="main-content" class="section hero-contact">
-    <div class="hero-inner">
-        <h1 class="intro-title-contact">{{t 'submit_a_request'}}</h1>
-        <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+    <div class="container">
+        <div class="sub-nav"></div>
+        <div id="main-content" class="form">
+            <div id="new-request-form"></div>
+        </div>
     </div>
-</section>
 
-<div class="container-divider"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const ticketFormId = params.get('ticket_form_id');
 
-<div class="container">
-    <div class="sub-nav"></div>
-    <div id="main-content" class="form">
-        <div id="new-request-form"></div>
-    </div>
-</div>
+            if (ticketFormId) {
+                fetch(`/api/v2/ticket_forms/${ticketFormId}.json`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const formName = data.ticket_form.name;
+                        updatePageStyles(ticketFormId, formName);
+                    })
+                    .catch(() => {
+                        console.error('Error fetching the form data');
+                        updatePageStyles(ticketFormId, 'Submit a Request');
+                    });
+            }
+        });
 
-<script type="module">
+        function updatePageStyles(ticketFormId, formTitle) {
+            const heroElement = document.querySelector('.hero-contact');
+            const formElement = document.querySelector('.form');
+
+            document.querySelector('.intro-title-contact').innerText = formTitle;
+
+            // Apply styles to hero section and form based on form ID
+            switch(ticketFormId) {
+                case '15525136863132':
+                    heroElement.style.backgroundColor = '#0092cb';
+                    heroElement.style.color = '#ffffff';
+                    formElement.style.backgroundColor = '#0092cb';
+                    formElement.style.color = '#ffffff';
+                    break;
+                case '15525228238620':
+                    heroElement.style.backgroundColor = '#0092CB';
+                    heroElement.style.color = '#ffffff';
+                    applyTextColor(heroElement, '#ffffff');  // Ensure all hero text is #000000
+                    formElement.style.backgroundColor = '#0092CB';
+                    formElement.style.color = '#0ffffff';
+                    applyTextColor(formElement, '#fffffff');  // Apply text color to all text within the form
+                    break;
+                case '15525177480220':
+                    heroElement.style.backgroundColor = '#0092CB';
+                    heroElement.style.color = '#ffffff';
+                    formElement.style.backgroundColor = '#0092CB';
+                    formElement.style.color = '#ffffff';
+                    break;
+                default:
+                    heroElement.style.backgroundColor = '#0092CB';
+                    heroElement.style.color = '#ffffff';
+                    formElement.style.backgroundColor = '#0092CB';
+                    formElement.style.color = '#ffffff';
+                    break;
+            }
+
+            // Apply styles to the form container
+            formElement.style.padding = '40px'; // Ensure sufficient padding
+            formElement.style.borderRadius = '8px'; // Optional: rounded corners
+        }
+
+        // Helper function to apply text color to all child elements within the hero and form
+        function applyTextColor(element, color) {
+            element.querySelectorAll('h1, h2, h3, p, label, span, div').forEach(function(child) {
+                child.style.color = color;
+            });
+        }
+        </script>
+    <script type="module">
     import { renderNewRequestForm } from "new-request-form";
 
     const container = document.getElementById("new-request-form");
@@ -109,30 +162,29 @@
 
     renderNewRequestForm(settings, props, container);
 
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         const formContainer = document.querySelector('.form-container');
         formContainer.classList.add('ready');
-
-        // Listen for form submission and handle redirect
-        const form = document.querySelector('#new-request-form form');
+        
+        // Listen for the form submission event
+        const form = document.querySelector('#new-request-form form'); // Adjust the selector if needed
 
         if (form) {
-            form.addEventListener('submit', function (event) {
-                // Allow the form to submit as usual
-
+            // Listen for the Zendesk form submit event
+            form.addEventListener('submit', function(event) {
+                // Allow the form to submit as usual, do not prevent default submission
+                // Monitor the form submission completion
                 const formSubmitInterval = setInterval(() => {
-                    // Look for an indication of successful submission
-                    const successMessage = document.querySelector('.zd-form-submission-success-message');
-
-                    if (successMessage) {
+                    // Check if the form submission process is complete
+                    if (document.querySelector('.zd-form-submission-success-message')) {
                         clearInterval(formSubmitInterval);
-                        // Redirect to the desired URL after a slight delay to ensure submission is complete
-                        setTimeout(() => {
-                            window.location.href = 'https://www.southwesternrailway.com/';
-                        }, 500); // Delay for half a second
+                        // Redirect to the desired URL
+                        window.location.href = 'https://www.southwesternrailway.com/';
                     }
-                }, 1000); // Check every 1 second
+                }, 1000); // Check every 1 second for submission completion
             });
         }
     });
 </script>
+
+

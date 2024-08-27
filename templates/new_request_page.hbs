@@ -93,125 +93,83 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const params = new URLSearchParams(window.location.search);
-            const ticketFormId = params.get('ticket_form_id');
+    document.addEventListener('DOMContentLoaded', function() {
+        const params = new URLSearchParams(window.location.search);
+        const ticketFormId = params.get('ticket_form_id');
 
-            if (ticketFormId) {
-                fetch(`/api/v2/ticket_forms/${ticketFormId}.json`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const formName = data.ticket_form.name;
-                        updatePageStyles(ticketFormId, formName);
-                    })
-                    .catch(() => {
-                        console.error('Error fetching the form data');
-                        updatePageStyles(ticketFormId, 'Submit a Request');
-                    });
-            }
-        });
-
-        function updatePageStyles(ticketFormId, formTitle) {
-            const heroElement = document.querySelector('.hero-contact');
-            const formElement = document.querySelector('.form');
-
-            document.querySelector('.intro-title-contact').innerText = formTitle;
-
-            // Apply styles to hero section and form based on form ID
-            switch(ticketFormId) {
-                case '15525136863132':
-                    heroElement.style.backgroundColor = '#061b2b';
-                    heroElement.style.color = '#ffffff';
-                    formElement.style.backgroundColor = '#061b2b';
-                    formElement.style.color = '#ffffff';
-                    break;
-                case '15525228238620':
-                    heroElement.style.backgroundColor = '#061b2b';
-                    heroElement.style.color = '#ffffff';
-                    applyTextColor(heroElement, '#ffffff');  // Ensure all hero text is #000000
-                    formElement.style.backgroundColor = '#061b2b';
-                    formElement.style.color = '#0ffffff';
-                    applyTextColor(formElement, '#fffffff');  // Apply text color to all text within the form
-                    break;
-                case '15525177480220':
-                    heroElement.style.backgroundColor = '#061b2b';
-                    heroElement.style.color = '#ffffff';
-                    formElement.style.backgroundColor = '#061b2b';
-                    formElement.style.color = '#ffffff';
-                    break;
-                default:
-                    heroElement.style.backgroundColor = '#061b2b';
-                    heroElement.style.color = '#ffffff';
-                    formElement.style.backgroundColor = '#061b2b';
-                    formElement.style.color = '#ffffff';
-                    break;
-            }
-
-            // Apply styles to the form container
-            formElement.style.padding = '40px'; // Ensure sufficient padding
-            formElement.style.borderRadius = '8px'; // Optional: rounded corners
-        }
-
-        // Helper function to apply text color to all child elements within the hero and form
-        function applyTextColor(element, color) {
-            element.querySelectorAll('h1, h2, h3, p, label, span, div').forEach(function(child) {
-                child.style.color = color;
-            });
-        }
-        </script>
-    <script type="module">
-    import { renderNewRequestForm } from "new-request-form";
-
-    const container = document.getElementById("new-request-form");
-
-    const settings = {{json settings}};
-
-    const props = {
-        requestForm: {{json new_request_form}},
-        newRequestPath: {{json (page_path 'new_request')}},
-        parentId: {{json parent.id}},
-        parentIdPath: {{json parent.url}},
-        locale: {{json help_center.locale}},
-        baseLocale: {{json help_center.base_locale}},
-        hasAtMentions: {{json help_center.at_mentions_enabled}},
-        userRole: {{json user.role}},
-        brandId: {{json brand.id}},
-        wysiwyg: true,
-        answerBotModal: {
-            answerBot: {{json answer_bot}},
-            hasRequestManagement: {{json help_center.request_management_enabled}},
-            isSignedIn: {{json signed_in}},
-            helpCenterPath: {{json (page_path 'help_center')}},
-            requestsPath: {{json (page_path 'requests')}},
-            requestPath: {{json (page_path 'request' id=answer_bot.request_id)}}
-        },
-    };
-
-    renderNewRequestForm(settings, props, container);
-
-    document.addEventListener("DOMContentLoaded", function() {
-        const formContainer = document.querySelector('.form-container');
-        formContainer.classList.add('ready');
-        
-        // Listen for the form submission event
-        const form = document.querySelector('#new-request-form form'); // Adjust the selector if needed
-
-        if (form) {
-            // Listen for the Zendesk form submit event
-            form.addEventListener('submit', function(event) {
-                // Allow the form to submit as usual, do not prevent default submission
-                // Monitor the form submission completion
-                const formSubmitInterval = setInterval(() => {
-                    // Check if the form submission process is complete
-                    if (document.querySelector('.zd-form-submission-success-message')) {
-                        clearInterval(formSubmitInterval);
-                        // Redirect to the desired URL
-                        window.location.href = 'https://www.southwesternrailway.com/';
-                    }
-                }, 1000); // Check every 1 second for submission completion
-            });
+        if (ticketFormId) {
+            fetch(`/api/v2/ticket_forms/${ticketFormId}.json`)
+                .then(response => response.json())
+                .then(data => {
+                    const formName = data.ticket_form.name;
+                    updatePageStyles(ticketFormId, formName);
+                })
+                .catch(() => {
+                    console.error('Error fetching the form data');
+                    updatePageStyles(ticketFormId, 'Submit a Request');
+                });
         }
     });
+
+    function updatePageStyles(ticketFormId, formTitle) {
+        const heroElement = document.querySelector('.hero-contact');
+        const formElement = document.querySelector('.form');
+        const formMessageElement = document.getElementById('form-message');
+
+        document.querySelector('.intro-title-contact').innerText = formTitle;
+
+        // Map different form IDs to specific messages
+        const formMessages = {
+            '15525136863132': 'Please provide all necessary details for your request.',
+            '15525228238620': 'Ensure all mandatory fields are filled in before submitting.',
+            '15525177480220': 'We will respond to your request as soon as possible.',
+            // Add more form-specific messages here
+            'default': 'Please fill out the form below to submit your request.'
+        };
+
+        // Set the appropriate message based on the form ID
+        const message = formMessages[ticketFormId] || formMessages['default'];
+        formMessageElement.innerText = message;
+
+        // Apply styles to hero section and form based on form ID
+        switch(ticketFormId) {
+            case '15525136863132':
+                heroElement.style.backgroundColor = '#061b2b';
+                heroElement.style.color = '#ffffff';
+                formElement.style.backgroundColor = '#061b2b';
+                formElement.style.color = '#ffffff';
+                break;
+            case '15525228238620':
+                heroElement.style.backgroundColor = '#061b2b';
+                heroElement.style.color = '#ffffff';
+                applyTextColor(heroElement, '#ffffff');
+                formElement.style.backgroundColor = '#061b2b';
+                formElement.style.color = '#ffffff';
+                applyTextColor(formElement, '#ffffff');
+                break;
+            case '15525177480220':
+                heroElement.style.backgroundColor = '#061b2b';
+                heroElement.style.color = '#ffffff';
+                formElement.style.backgroundColor = '#061b2b';
+                formElement.style.color = '#ffffff';
+                break;
+            default:
+                heroElement.style.backgroundColor = '#061b2b';
+                heroElement.style.color = '#ffffff';
+                formElement.style.backgroundColor = '#061b2b';
+                formElement.style.color = '#ffffff';
+                break;
+        }
+
+        // Apply styles to the form container
+        formElement.style.padding = '40px';
+        formElement.style.borderRadius = '8px';
+    }
+
+    // Helper function to apply text color to all child elements within the hero and form
+    function applyTextColor(element, color) {
+        element.querySelectorAll('h1, h2, h3, p, label, span, div').forEach(function(child) {
+            child.style.color = color;
+        });
+    }
 </script>
-
-

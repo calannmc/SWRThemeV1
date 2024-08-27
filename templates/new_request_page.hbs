@@ -8,10 +8,9 @@
     transition: opacity 0.3s ease-in-out;
   }
 
-  .StyledFileUpload-sc-1rodjgn-0 {
-    color: #fff !important;
-    border: #fff;
-  }
+.eZAVpC{
+    visabiity: hidden;
+}
 
   .form-container.ready {
     visibility: visible;
@@ -132,10 +131,12 @@
 
         // Set the appropriate message based on the form ID
         const formMessages = {
-            '15525136863132': 'Please provide all necessary details for your request.',
-            '15525228238620': 'Ensure all mandatory fields are filled in before submitting.',
-            '15525177480220': 'We will respond to your request as soon as possible.',
-            'default': 'Please fill out the form below to submit your request.'
+            '15525136863132': '',
+            '15525228238620': 'We are sorry for the disruption you have experienced, please complete the form below and one of our Contact Centre Advisors will be in touch to arrange compensation.',
+            '15525177480220': 'Please Note, this form is to claim for a Taxi or Hotel cost which you have incurred due to disruption where we have announced you can claim. If you require a ticket refund click here.
+
+If you need to claim delay repay click here.',
+            'default': ''
         };
 
         const message = formMessages[ticketFormId] || formMessages['default'];

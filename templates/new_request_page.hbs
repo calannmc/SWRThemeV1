@@ -113,18 +113,36 @@
         });
     
 
-        // Map different form IDs to specific messages
+       document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const ticketFormId = params.get('ticket_form_id');
+    const formMessageElement = document.getElementById('form-message');
+
+    if (ticketFormId) {
+        fetch(`/api/v2/ticket_forms/${ticketFormId}.json`)
+            .then(response => response.json())
+            .then(data => {
+                const formName = data.ticket_form.name;
+                updatePageStyles(ticketFormId, formName);
+            })
+            .catch(() => {
+                console.error('Error fetching the form data');
+                updatePageStyles(ticketFormId, 'Submit a Request');
+            });
+
+        // Set the appropriate message based on the form ID
         const formMessages = {
             '15525136863132': 'Please provide all necessary details for your request.',
             '15525228238620': 'Ensure all mandatory fields are filled in before submitting.',
             '15525177480220': 'We will respond to your request as soon as possible.',
-            // Add more form-specific messages here
             'default': 'Please fill out the form below to submit your request.'
         };
 
-        // Set the appropriate message based on the form ID
         const message = formMessages[ticketFormId] || formMessages['default'];
         formMessageElement.innerText = message;
+    }
+});
+
 
         function updatePageStyles(ticketFormId, formTitle) {
             const heroElement = document.querySelector('.hero-contact');

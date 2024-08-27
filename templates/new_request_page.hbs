@@ -129,16 +129,21 @@
                 updatePageStyles(ticketFormId, 'Submit a Request');
             });
 
-        // Set the appropriate message based on the form ID
+    // Set the appropriate message based on the form ID with HTML content
         const formMessages = {
             '15525136863132': '',
-            '15525228238620': 'We are sorry for the disruption you have experienced, please complete the form below and one of our Contact Centre Advisors will be in touch to arrange compensation.',
-            '15525177480220': 'Please Note, this form is to claim for a Taxi or Hotel cost which you have incurred due to disruption where we have announced you can claim. If you require a ticket refund click here.If you need to claim delay repay click here.',
+            '15525228238620': `
+                <p style="color: #ffffff;">We are sorry for the disruption you have experienced. Please complete the form below and one of our Contact Centre Advisors will be in touch to arrange compensation.</p>
+            `,
+            '15525177480220': `
+                <p style="color: #ffffff;">Please Note, this form is to claim for a Taxi or Hotel cost which you have incurred due to disruption where we have announced you can claim. If you require a ticket refund, click <a href="https://www.southwesternrailway.com/contact-and-help/train-ticket-refunds" style="color: #ffcc00; text-decoration: underline;">here</a>. If you need to claim delay repay, click <a href="https://www.southwesternrailway.com/contact-and-help/delay-repay" style="color: #ffcc00; text-decoration: underline;">here</a>.</p>
+            `,
             'default': ''
         };
 
+        // Set the message using innerHTML
         const message = formMessages[ticketFormId] || formMessages['default'];
-        formMessageElement.innerText = message;
+        formMessageElement.innerHTML = message;
     }
 });
 

@@ -129,14 +129,24 @@
                 updatePageStyles(ticketFormId, 'Submit a Request');
             });
 
-    // Set the appropriate message based on the form ID with HTML content
+      // Set the appropriate message based on the form ID with styled HTML content
         const formMessages = {
             '15525136863132': '',
             '15525228238620': `
-                <p style="color: #ffffff;">We are sorry for the disruption you have experienced. Please complete the form below and one of our Contact Centre Advisors will be in touch to arrange compensation.</p>
+                <p style="color: #000000;">
+                    We are sorry for the disruption you have experienced. Please complete the form below and one of our Contact Centre Advisors will be in touch to arrange compensation.
+                </p>
             `,
             '15525177480220': `
-                <p style="color: #ffffff;">Please Note, this form is to claim for a Taxi or Hotel cost which you have incurred due to disruption where we have announced you can claim. If you require a ticket refund, click <a href="https://www.southwesternrailway.com/contact-and-help/train-ticket-refunds" style="color: #ffcc00; text-decoration: underline;">here</a>. If you need to claim delay repay, click <a href="https://www.southwesternrailway.com/contact-and-help/delay-repay" style="color: #ffcc00; text-decoration: underline;">here</a>.</p>
+                <p style="color: #000000;">
+                    Please Note, this form is to claim for a <strong>Taxi</strong> or <strong>Hotel</strong> cost which you have incurred due to disruption where we have announced you can claim.
+                </p>
+                <p style="color: #000000;">
+                    <strong>If you require a <span style="font-weight: bold;">ticket refund</span></strong>, click <a href="https://www.southwesternrailway.com/contact-and-help/train-ticket-refunds" style="color: #0000FF; font-weight: bold;">here</a>.
+                </p>
+                <p style="color: #000000;">
+                    <strong>If you need to claim <span style="font-weight: bold;">delay repay</span></strong>, click <a href="https://www.southwesternrailway.com/contact-and-help/delay-repay" style="color: #0000FF; font-weight: bold;">here</a>.
+                </p>
             `,
             'default': ''
         };

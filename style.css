@@ -1216,6 +1216,7 @@ ul {
     transform: none; /* Remove vertical transformation */
     top: auto; /* Remove top position */
     font-size:32px;
+    padding:0px;
   }
 
   .intro-title {

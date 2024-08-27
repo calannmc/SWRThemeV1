@@ -243,7 +243,7 @@ h6 {
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 84px;
 }
 
 h2 {
@@ -1165,7 +1165,7 @@ ul {
   background-color:$brand_color_midblue;
   background-position: center;
   background-size: cover;
-  height: 300px;
+  height: 360px;
   padding: 0 20px;
   text-align: center;
   width: 100%;

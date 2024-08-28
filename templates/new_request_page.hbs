@@ -294,8 +294,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const ticketFormId = params.get('ticket_form_id');
 
     // IDs of forms that require mandatory attachments and/or descriptions
-    const mandatoryAttachmentForms = ['15525136863132', '15525228238620']; // Replace with your form IDs
-    const descriptionAttachmentForms = ['15525228238620']; // Replace with your form IDs
+    const mandatoryAttachmentForms = ['15525136863132', '15525177480220']; // Replace with your form IDs
+    const descriptionAttachmentForms = ['15525177480220']; // Replace with your form IDs
 
     // Wait for the form to fully load and elements to be available
     const intervalId = setInterval(function() {
@@ -331,7 +331,12 @@ document.addEventListener("DOMContentLoaded", function() {
 console.log(form, attachmentField); // Add this line to see if elements are correctly selected
 
 
-$('div#upload-dropzone').parent().append('<p id=attachment_field_hint>Test hint</p>')
+</script>
+<script>
+ if(window.location.href.indexOf("15525177480220") > -1) {
+ $('div#upload-dropzone').parent().find('label').text('Please attach your proof of purchase below')
+ }
+ // replace 123456 with the 'hardware fault' form ID
 </script>
 
 

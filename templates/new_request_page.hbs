@@ -119,10 +119,27 @@
     </div>
 </div>
 
-    <script>
-
-<script>
+   <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const ticketFormId = params.get('ticket_form_id');
+
+            if (ticketFormId) {
+                fetch(`/api/v2/ticket_forms/${ticketFormId}.json`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const formName = data.ticket_form.name;
+                        updatePageStyles(ticketFormId, formName);
+                    })
+                    .catch(() => {
+                        console.error('Error fetching the form data');
+                        updatePageStyles(ticketFormId, 'Submit a Request');
+                    });
+            }
+        });
+    
+
+       document.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
     const ticketFormId = params.get('ticket_form_id');
     const formMessageElement = document.getElementById('form-message');
@@ -139,23 +156,23 @@
                 updatePageStyles(ticketFormId, 'Submit a Request');
             });
 
-        // Set the appropriate message based on the form ID with styled HTML content
+      // Set the appropriate message based on the form ID with styled HTML content
         const formMessages = {
             '15525136863132': '',
             '15525228238620': `
-                <p style="color: #000000; padding:10px;">
+                <p style="color: #000000;">
                     We are sorry for the disruption you have experienced. Please complete the form below and one of our Contact Centre Advisors will be in touch to arrange compensation.
                 </p>
             `,
             '15525177480220': `
-                <p style="color: #000000; padding:10px;">
-                    <strong>Please Note</strong>, this form is to claim for a Taxi or Hotel cost which you have incurred due to disruption where we have announced you can claim.
+                <p style="color: #000000;">
+                    Please Note, this form is to claim for a <strong>Taxi</strong> or <strong>Hotel</strong> cost which you have incurred due to disruption where we have announced you can claim.
                 </p>
-                <p style="color: #000000; padding:10px;">
-                    If you require a <strong>ticket refund</strong>, click <a href="https://www.southwesternrailway.com/contact-and-help/train-ticket-refunds" style="color: #0092CB; font-weight: bold;">here</a>.
+                <p style="color: #000000;">
+                    <strong>If you require a <span style="font-weight: bold;">ticket refund</span></strong>, click <a href="https://www.southwesternrailway.com/contact-and-help/train-ticket-refunds" style="color: #0000FF; font-weight: bold;">here</a>.
                 </p>
-                <p style="color: #000000; padding:10px;">
-                    <strong>If you need to claim <strong>delay repay</strong>, click <a href="https://www.southwesternrailway.com/contact-and-help/delay-repay" style="color: #0092CB; font-weight: bold;">here</a>.
+                <p style="color: #000000;">
+                    <strong>If you need to claim <span style="font-weight: bold;">delay repay</span></strong>, click <a href="https://www.southwesternrailway.com/contact-and-help/delay-repay" style="color: #0000FF; font-weight: bold;">here</a>.
                 </p>
             `,
             'default': ''
@@ -270,7 +287,5 @@
         }
     });
 </script>
-
-
 
 

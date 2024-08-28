@@ -288,4 +288,24 @@
     });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to check if the attachment field is empty
+    function validateAttachment() {
+        var attachmentField = document.querySelector('input[type="file"]');
+        var submitButton = document.querySelector('form').querySelector('input[type="submit"]');
+
+        // Check if attachment field is empty
+        if (!attachmentField.files.length) {
+            alert("Please attach a file before submitting.");
+            return false;  // Prevent form submission
+        }
+        return true;  // Allow form submission
+    }
+
+    // Attach validation function to form submission
+    var form = document.querySelector('form');
+    form.onsubmit = validateAttachment;
+});
+</script>
 

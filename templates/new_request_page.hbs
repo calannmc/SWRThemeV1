@@ -290,12 +290,29 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+    const params = new URLSearchParams(window.location.search);
+    const ticketFormId = params.get('ticket_form_id');
+
+    // Define specific form IDs where the attachment field should be mandatory
+    const mandatoryAttachmentForms = ['15525136863132', '15525228238620']; // Replace with your form IDs
+
+    // Define form IDs where you want to add a description to the attachment field
+    const descriptionAttachmentForms = ['15525228238620']; // Replace with your form IDs
+
+    // Add description text to the attachment field if the form matches
+    if (descriptionAttachmentForms.includes(ticketFormId)) {
+        const attachmentLabel = document.querySelector('label[for="request_attachments"]');
+        if (attachmentLabel) {
+            const descriptionText = document.createElement('p');
+            descriptionText.style.color = '#ffffff'; // Customize the color if needed
+            descriptionText.textContent = 'Please attach any relevant files to support your request. (e.g., screenshots, documents)';
+            attachmentLabel.appendChild(descriptionText);
+        }
+    }
+
     // Function to check if the attachment field is empty
     function validateAttachment() {
-        var attachmentField = document.querySelector('input[type="file"]');
-        var submitButton = document.querySelector('form').querySelector('input[type="submit"]');
-
-        // Check if attachment field is empty
+        const attachmentField = document.querySelector('input[type="file"]');
         if (!attachmentField.files.length) {
             alert("Please attach a file before submitting.");
             return false;  // Prevent form submission
@@ -303,9 +320,13 @@ document.addEventListener("DOMContentLoaded", function() {
         return true;  // Allow form submission
     }
 
-    // Attach validation function to form submission
-    var form = document.querySelector('form');
-    form.onsubmit = validateAttachment;
+    // Attach validation function to form submission if the form ID requires a mandatory attachment
+    if (mandatoryAttachmentForms.includes(ticketFormId)) {
+        const form = document.querySelector('form');
+        if (form) {
+            form.onsubmit = validateAttachment;
+        }
+    }
 });
 </script>
 

@@ -297,30 +297,37 @@ document.addEventListener("DOMContentLoaded", function() {
     const mandatoryAttachmentForms = ['15525136863132', '15525228238620']; // Replace with your form IDs
     const descriptionAttachmentForms = ['15525228238620']; // Replace with your form IDs
 
-    // Check if the form requires a mandatory attachment
-    if (mandatoryAttachmentForms.includes(ticketFormId)) {
+    // Wait for the form to fully load and elements to be available
+    const intervalId = setInterval(function() {
         const form = document.querySelector('form');
-        if (form) {
-            form.addEventListener('submit', function(event) {
-                const attachmentField = document.querySelector('input[type="file"]');
-                if (attachmentField && !attachmentField.files.length) {
-                    event.preventDefault(); // Prevent form submission
-                    alert("Please attach a file before submitting.");
-                }
-            });
-        }
-    }
+        const attachmentField = document.querySelector('input[type="file"]');
+        
+        if (form && attachmentField) {
+            clearInterval(intervalId); // Stop checking once elements are found
 
-    // Check if the form requires a description to be added to the attachment field
-    if (descriptionAttachmentForms.includes(ticketFormId)) {
-        const attachmentLabel = document.querySelector('label[for="request_attachments"]');
-        if (attachmentLabel) {
-            const descriptionText = document.createElement('p');
-            descriptionText.style.color = '#ffffff'; // Customize the color if needed
-            descriptionText.textContent = 'Please attach any relevant files to support your request. (e.g., screenshots, documents)';
-            attachmentLabel.appendChild(descriptionText);
+            // Check if the form requires a mandatory attachment
+            if (mandatoryAttachmentForms.includes(ticketFormId)) {
+                form.addEventListener('submit', function(event) {
+                    if (!attachmentField.files.length) {
+                        event.preventDefault(); // Prevent form submission
+                        alert("Please attach a file before submitting.");
+                    }
+                });
+            }
+
+            // Check if the form requires a description to be added to the attachment field
+            if (descriptionAttachmentForms.includes(ticketFormId)) {
+                const attachmentLabel = document.querySelector('label[for="request_attachments"]');
+                if (attachmentLabel) {
+                    const descriptionText = document.createElement('p');
+                    descriptionText.style.color = '#ffffff'; // Customize the color if needed
+                    descriptionText.textContent = 'Please attach any relevant files to support your request. (e.g., screenshots, documents)';
+                    attachmentLabel.appendChild(descriptionText);
+                }
+            }
         }
-    }
+    }, 500); // Check every 500ms until the form and attachment field are available
 });
 </script>
+
 

@@ -165,8 +165,29 @@
         const message = formMessages[ticketFormId] || formMessages['default'];
         formMessageElement.innerHTML = message;
     }
-});
+ function updateAttachmentField(formId) {
+        const attachmentField = document.querySelector('.attachment-field');
+        const attachmentLabel = document.querySelector('.attachment-description');
+        
+        // Define which forms require mandatory attachments
+        const mandatoryForms = ['15525228238620', '15525177480220']; // Add form IDs that require mandatory attachments
+        
+        // Define custom descriptions for each form
+        const attachmentDescriptions = {
+            '15525228238620': 'Please attach any supporting documents related to your compensation claim.',
+            '15525177480220': 'Please attach receipts for Taxi or Hotel costs incurred during disruption.'
+        };
 
+        if (mandatoryForms.includes(formId)) {
+            if (attachmentField) {
+                attachmentField.setAttribute('required', 'required'); // Make attachment field mandatory
+            }
+            if (attachmentLabel) {
+                attachmentLabel.innerText = attachmentDescriptions[formId] || 'Please attach relevant documents.';
+            }
+        }
+    }
+});
 
         function updatePageStyles(ticketFormId, formTitle) {
             const heroElement = document.querySelector('.hero-contact');
@@ -270,29 +291,7 @@
         }
     });
 
-     function updateAttachmentField(formId) {
-        const attachmentField = document.querySelector('.attachment-field');
-        const attachmentLabel = document.querySelector('.attachment-description');
-        
-        // Define which forms require mandatory attachments
-        const mandatoryForms = ['15525228238620', '15525177480220']; // Add form IDs that require mandatory attachments
-        
-        // Define custom descriptions for each form
-        const attachmentDescriptions = {
-            '15525228238620': 'Please attach any supporting documents related to your compensation claim.',
-            '15525177480220': 'Please attach receipts for Taxi or Hotel costs incurred during disruption.'
-        };
-
-        if (mandatoryForms.includes(formId)) {
-            if (attachmentField) {
-                attachmentField.setAttribute('required', 'required'); // Make attachment field mandatory
-            }
-            if (attachmentLabel) {
-                attachmentLabel.innerText = attachmentDescriptions[formId] || 'Please attach relevant documents.';
-            }
-        }
-    }
-});
+    
 </script>
 
 

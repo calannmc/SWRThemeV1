@@ -2,7 +2,6 @@
 
 
 <style>
-  <style>
   .form-container {
     visibility: hidden;
     opacity: 0;
@@ -50,14 +49,15 @@
     color: #000000;
   }
 
-  /* Center the form and set the max width */
+  /* Align the form left under the text */
   .form {
     background-color: {{settings.brand_color_darkblue}}; /* Default Black background */
     color: {{settings.brand_color_white}}; /* White text color for contrast */
     padding: 40px; /* Increased padding around the form */
     border-radius: 8px; /* Optional: rounded corners */
     max-width: 600px;
-    margin: 10px auto; /* Center the form horizontally */
+    margin-left: 0; /* Align form to the left on desktop */
+    margin-right: auto;
   }
 
   /* Apply white text specifically to form titles */
@@ -93,10 +93,6 @@
     }
   }
 </style>
-
-</style>
-
-
 
 
  

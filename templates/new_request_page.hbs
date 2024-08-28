@@ -2,6 +2,7 @@
 
 
 <style>
+  <style>
   .form-container {
     visibility: hidden;
     opacity: 0;
@@ -37,14 +38,16 @@
     background-color: {{settings.brand_color_darkblue}}; /* Default Black background */
     color: {{settings.brand_color_white}}; /* White text color for contrast */
     text-align: left; /* Ensure the title is left-aligned */
-    padding-left: 40px; /* Add padding to match alignment */
   }
 
-  /* Align containers with the intro-title-contact */
-  .container {
-    max-width: 600px;
-    margin-left: 40px; /* Align containers with the intro-title-contact */
-    margin-right: auto;
+  /* Full-width text on desktop, no word wrap */
+  #form-message {
+    width: 100%;
+    white-space: nowrap; /* Prevent word wrap */
+    overflow: hidden; /* Hide overflow if text is too long */
+    text-align: left; /* Ensure text is left-aligned */
+    margin-left: 0; /* Align to left on desktop */
+    color: #000000;
   }
 
   /* Center the form and set the max width */
@@ -54,13 +57,7 @@
     padding: 40px; /* Increased padding around the form */
     border-radius: 8px; /* Optional: rounded corners */
     max-width: 600px;
-  }
-
-  /* Style for form-message to align with form */
-  #form-message {
-    max-width: 600px;
-    padding: 0 40px; /* Ensure it aligns with the form padding */
-    color: #000000;
+    margin: 10px auto; /* Center the form horizontally */
   }
 
   /* Apply white text specifically to form titles */
@@ -70,21 +67,22 @@
 
   /* Media query for mobile devices */
   @media (max-width: 768px) {
-    .hero-contact, .container {
-      padding-left: 0; /* Reset padding on mobile */
-      margin: 0 auto; /* Center containers on mobile */
-      text-align: center; /* Center text on mobile */
-    }
-
     .form {
       margin: 0 auto; /* Center the form on mobile */
-      text-align: center; /* Center the text inside the form */
+      text-align: left; /* Ensure text inside the form is left-aligned */
     }
 
     #form-message {
-      text-align: center; /* Center the text inside the message */
+      width: auto;
+      white-space: normal; /* Allow word wrap on mobile */
+      margin: 0 auto; /* Center the container on mobile */
       padding: 0 20px; /* Adjust padding for mobile */
-      margin: 0 auto; /* Center the message on mobile */
+      text-align: left; /* Maintain left alignment for the text */
+    }
+
+    .container {
+      padding-left: 0; /* Reset padding on mobile */
+      margin: 0 auto; /* Center containers on mobile */
     }
 
     .form-container {
@@ -94,6 +92,8 @@
       flex-direction: column;
     }
   }
+</style>
+
 </style>
 
 

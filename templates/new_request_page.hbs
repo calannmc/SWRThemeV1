@@ -114,9 +114,7 @@
 <div class="container">
     <div class="sub-nav"></div>
     <div id="main-content" class="form">
-        <!-- Form message -->
-       
-        <!-- Form -->
+  
         <div id="new-request-form"></div>
     </div>
 </div>
@@ -134,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 const formName = data.ticket_form.name;
                 updatePageStyles(ticketFormId, formName);
-                updateAttachmentField(ticketFormId);  // Call the function here to update the attachment field
+                updateAttachmentField(ticketFormId);  // Ensure the function is called after form data is fetched
             })
             .catch(() => {
                 console.error('Error fetching the form data');
@@ -169,26 +167,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateAttachmentField(formId) {
-        const attachmentField = document.querySelector('.attachment-field');
-        const attachmentLabel = document.querySelector('.attachment-description');
-        
-        // Define which forms require mandatory attachments
-        const mandatoryForms = ['15525228238620', '15525177480220']; // Add form IDs that require mandatory attachments
-        
-        // Define custom descriptions for each form
-        const attachmentDescriptions = {
-            '15525228238620': 'Please attach any supporting documents related to your compensation claim.',
-            '15525177480220': 'Please attach receipts for Taxi or Hotel costs incurred during disruption.'
-        };
+        // Ensure the DOM is fully loaded before selecting elements
+        window.setTimeout(() => {
+            const attachmentField = document.querySelector('.attachment-field');
+            const attachmentLabel = document.querySelector('.attachment-description');
+            
+            // Define which forms require mandatory attachments
+            const mandatoryForms = ['15525228238620', '15525177480220']; // Add form IDs that require mandatory attachments
+            
+            // Define custom descriptions for each form
+            const attachmentDescriptions = {
+                '15525228238620': 'Please attach any supporting documents related to your compensation claim.',
+                '15525177480220': 'Please attach receipts for Taxi or Hotel costs incurred during disruption.'
+            };
 
-        if (mandatoryForms.includes(formId)) {
-            if (attachmentField) {
-                attachmentField.setAttribute('required', 'required'); // Make attachment field mandatory
+            if (mandatoryForms.includes(formId)) {
+                if (attachmentField) {
+                    attachmentField.setAttribute('required', 'required'); // Make attachment field mandatory
+                }
+                if (attachmentLabel) {
+                    attachmentLabel.innerText = attachmentDescriptions[formId] || 'Please attach relevant documents.';
+                }
             }
-            if (attachmentLabel) {
-                attachmentLabel.innerText = attachmentDescriptions[formId] || 'Please attach relevant documents.';
-            }
-        }
+        }, 500); // Delay to ensure elements are loaded
     }
 });
 
@@ -240,7 +241,5 @@ function applyTextColor(element, color) {
     });
 }
 
-    
-</script>
 
 

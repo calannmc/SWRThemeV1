@@ -18,7 +18,11 @@
   }
 
 
- 
+  var label = document.querySelector('label[for="request-attachments"]').innerHTML = "ADD ANY TEXT HERE";
+  var div = document.querySelector('label[for="request-attachments"]');
+var p = document.createElement('p');
+p.textContent = 'This is some data that will be appended to the div element';
+div.appendChild(p);
 
   // Navigation
  

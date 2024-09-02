@@ -52,3 +52,27 @@
   console.log('return_to parameter:', getUrlParameter('return_to'));
 })();
 </script>
+
+<script>
+   import axios from 'axios';
+
+  const serveRequest = async (reference) => {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+  
+      const { data } = axios.post(
+          `${process.env.DATAGUARD_URL}/v1/access-tokens/tokens`,
+          {
+              applicationId: process.env.DATAGUARD_APP_ID,
+              externalRef: reference,
+              expiryDate: tomorrow.toISOString(),
+          },
+          {
+              headers: {
+                  'X-API-Key': process.env.DATAGUARD_API_KEY,
+              }
+          }
+      );
+  
+      return data.token;
+</script>

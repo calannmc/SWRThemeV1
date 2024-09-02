@@ -18,11 +18,15 @@
   }
 
 
-  var label = document.querySelector('label[for="request-attachments"]').innerHTML = "ADD ANY TEXT HERE";
-  var div = document.querySelector('label[for="request-attachments"]');
-var p = document.createElement('p');
-p.textContent = 'This is some data that will be appended to the div element';
-div.appendChild(p);
+  var ticketForm = location.search.split('ticket_form_id=')[1];
+  if(ticketForm == 18570) {
+    $('section.main-column h1').html('Product Registration');
+    $('#request_subject').val('Product Registration');
+    $('#request_description').val('There is a new product registration.');
+    $('#request_subject').parent('.request_subject').hide(); // Hide subject
+    $('#request_description').parent('.request_description').hide(); 
+    $("<p>Please upload your product receipt here.<p>").insertAfter('label:contains("Attachments")'); // Adds text below "Attachments"
+  }
 
   // Navigation
  

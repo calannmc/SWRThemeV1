@@ -213,6 +213,12 @@
                     formElement.style.backgroundColor = '#061b2b';
                     formElement.style.color = '#ffffff';
                     break;
+                case '15525392680220':
+                    heroElement.style.backgroundColor = '#061b2b';
+                    heroElement.style.color = '#ffffff';
+                    formElement.style.backgroundColor = '#061b2b';
+                    formElement.style.color = '#ffffff';
+                    break;
                 default:
                     heroElement.style.backgroundColor = '#061b2b';
                     heroElement.style.color = '#ffffff';
@@ -224,6 +230,15 @@
             // Apply styles to the form container
             formElement.style.padding = '40px'; // Ensure sufficient padding
             formElement.style.borderRadius = '8px'; // Optional: rounded corners
+              // Set up and insert the form title
+    formTitleElement.textContent = formTitle;
+    formTitleElement.style.fontSize = '24px';
+    formTitleElement.style.fontWeight = 'bold';
+    formTitleElement.style.marginBottom = '20px';
+    formTitleElement.style.color = '#eeeeee';
+
+    // Insert the form title at the beginning of the form element
+    formElement.insertBefore(formTitleElement, formElement.firstChild);
         }
 
         // Helper function to apply text color to all child elements within the hero and form

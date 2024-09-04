@@ -109,12 +109,13 @@
 
 <div class="container-divider"></div>
 <div class="container">
+  <div id="form-title"></div>
      <p id="form-message"></p>
 </div>
 <div class="container">
     <div class="sub-nav"></div>
     <div id="main-content" class="form">
-   <div id="form-title"></div>
+   
         <div id="new-request-form"></div>
     </div>
 </div>
@@ -230,15 +231,9 @@
             // Apply styles to the form container
             formElement.style.padding = '40px'; // Ensure sufficient padding
             formElement.style.borderRadius = '8px'; // Optional: rounded corners
-              // Set up and insert the form title
-    formTitleElement.textContent = formTitle;
-    formTitleElement.style.fontSize = '24px';
-    formTitleElement.style.fontWeight = 'bold';
-    formTitleElement.style.marginBottom = '20px';
-    formTitleElement.style.color = '#eeeeeee';
-
-    // Insert the form title at the beginning of the form element
-    formElement.insertBefore(formTitleElement, formElement.firstChild);
+            const formTitleElement = document.getElementById('form-title');
+formTitleElement.style.color = '#000000; 
+  
         }
 
         // Helper function to apply text color to all child elements within the hero and form
